@@ -1,0 +1,36 @@
+---
+title: "Listado de Mejoras"
+format: html
+toc: false
+---
+
+## Unidad 1: Introducción al análisis de algoritmos
+- [ ] **Mejora**: - Se integró el paquete `{typst}` para detección automática de:
+  - Ausencia de acentos diacríticos
+  - Uso inconsistente de mayúsculas
+  - Puntuación irregular
+  - Las ecuaciones ahora utilizan el entorno `{math}` con estilos diferenciados:
+
+## Unidad 2: Estructuras de datos
+- [ ] **Mejora**:Sin cambios mayores, solo se integra el desarrollo del proyecto dentro del mismo
+notebook y ya no en un archivo como word, esto para poder observar los resultados segun ls observaciones
+de la tarea.    
+
+## Unidad 3: Algoritmos de ordenamiento por comparación
+- [ ] **Mejora**: Se mejora la estructura de acuerdo a lo señalado en la tarea, se refuerza el trabajo documental,
+y se modifica Bubbleshort para ser adaptativo, se optimiza el manejo de None, se eliminan las copias innecesarias
+de Mergesort, se corrige el pivote en quick sort y se reconstruye la estructura del skiplist basado en 
+las referencias de las clases.
+
+## Unidad 4: Algoritmos de búsqueda por comparación
+- [ ] **Mejora**: Se corrigen los algoritmos B1 y B2.
+
+
+## Unidad 5: Algoritmos de intersección y unión de conjuntos en el modelo de comparación
+- [ ] **Mejora**: Sin cambios
+
+<style>
+/* Estilos personalizados */
+ul { list-style-type: square; }
+[ ] { color: #e6550d; } /* Tareas pendientes */
+</style>

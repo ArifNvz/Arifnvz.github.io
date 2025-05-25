@@ -1,0 +1,57 @@
+/* Colores tecnológicos */
+:root {
+  --primary-color: #2a7f62;
+  --secondary-color: #3dccc7;
+  --dark-color: #1a535c;
+  --light-color: #f7fff7;
+  --highlight-color: #4ecdc4;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.sidebar {
+  background-color: var(--light-color);
+  border-right: 1px solid #e1e1e1;
+}
+
+.navbar {
+  background-color: var(--dark-color);
+  color: white;
+}
+
+.navbar a {
+  color: white;
+}
+
+.navbar a:hover {
+  color: var(--highlight-color);
+}
+
+.contact-links a {
+  display: block;
+  margin: 10px 0;
+  padding: 8px 15px;
+  background-color: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.contact-links a:hover {
+  background-color: var(--dark-color);
+}
+
+/* Estilo para las unidades */
+h1, h2, h3 {
+  color: var(--dark-color);
+}
+
+h1 {
+  border-bottom: 2px solid var(--highlight-color);
+  padding-bottom: 10px;
+}

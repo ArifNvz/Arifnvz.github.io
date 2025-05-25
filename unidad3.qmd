@@ -1,0 +1,425 @@
+---
+jupyter: python3
+---
+
+#3A. Reporte escrito. Experimentos y análisis de algoritmos de ordenamiento.
+####MATERIA: Análisis de algoritmos 2025-1
+####ALUMNO: ARIF NARVAEZ DE LA O
+
+## **Introducción**
+El análisis de algoritmos de ordenamiento es fundamental para entender cómo diferentes métodos pueden resolver un mismo problema de manera más o menos eficiente. En este trabajo, se implementarán y compararán cinco algoritmos de ordenamiento: Bubble Sort, Heapsort, Mergesort, Quicksort y la estructura de datos SkipList. El objetivo es evaluar su rendimiento en términos de tiempo de ejecución y número de operaciones realizadas, utilizando archivos JSON con diferentes niveles de perturbación.
+
+Los archivos JSON contienen listas de números que representan conjuntos de datos con distintos grados de desorden. A través de este análisis, se busca determinar cuál de estos algoritmos es más eficiente para ordenar grandes volúmenes de datos y cómo su rendimiento varía según el nivel de desorden inicial.
+
+#1- IMPORTACION DE LAS LIBRERIAS
+
+```{python}
+#| colab: {base_uri: https://localhost:8080/}
+import time
+import json
+import pandas as pd
+import matplotlib.pyplot as plt
+import random
+from google.colab import drive
+drive.mount('/content/drive')
+```
+
+#2-RUTA DE ACCESO PARA LOS ARCHIVOS
+
+La variable ruta almacena la generalidad del path donde se encuentran alojados los archivos y en conjunto de un diccionario se concatenan los nombres de los archivos. La finalidad de crear un ruta por medio de un diccionario es que se presentaron problemas de dimensionalidad al querer guardar os datos cargados en una lista, por ello se opto por mejor crear una funcion que cargue y lea los archivos iterando cada una de las rutas de los archivos para despues aplicar los algoritmos que señala el ejercicio.
+
+```{python}
+ruta = "/content/drive/MyDrive/materiales/listas-posteo-con-perturbaciones/listas-posteo-con-perturbaciones-p="
+archivos_json = {
+    "lista_post_p016": ruta + "016.json",
+    "lista_post_p032": ruta + "032.json",
+    "lista_post_p064": ruta + "064.json",
+    "lista_post_p128": ruta + "128.json",
+    "lista_post_p256": ruta + "256.json",
+    "lista_post_p512": ruta + "512.json"
+}
+```
+
+#3-CARGA Y LECTURA DE LOS DATOS
+La función
+```
+cargar_json_como_lista
+```
+ se encarga de leer un archivo JSON y convertirlo en una lista de listas, lo cual es útil para procesar datos estructurados. Primero, abre el archivo JSON en modo lectura y carga su contenido utilizando la función json.load. Luego se verifica la estructura del JSON cargado: si es un diccionario, extrae los valores (que se espera que sean listas) y los convierte en una lista de listas esta es una medida preventiva para evitar problemas con los tipos de datos a la hora de aplicar los algoritmos; posteriormente si es una lista de listas, la utiliza directamente. Si el archivo JSON no tiene una estructura válida (es decir, no es un diccionario ni una lista de listas), la función lanza una excepción ValueError indicando que la estructura no es compatible.
+
+```{python}
+# Función para cargar un archivo JSON como lista de listas
+def cargar_json_como_lista(ruta_archivo):
+    with open(ruta_archivo, 'r') as archivo:
+        data = json.load(archivo)
+
+    # Verificar si el JSON es un diccionario o una lista
+    if isinstance(data, dict):
+        # Si es un diccionario, extraer las listas de los valores
+        return list(data.values())
+    elif isinstance(data, list):
+        # Si es una lista de listas, usarla directamente
+        return data
+    else:
+        raise ValueError("El archivo JSON no tiene una estructura válida.")
+
+
+  # Funciones auxiliares para manejo de None
+def move_nones_to_end(lst):
+    non_nones = [x for x in lst if x is not None]
+    nones = [None] * (len(lst) - len(non_nones))
+    return non_nones + nones
+
+def move_nones_to_beginning(lst):
+    non_nones = [x for x in lst if x is not None]
+    nones = [None] * (len(lst) - len(non_nones))
+    return nones + non_nones
+```
+
+#4-ALGORITMOS A UTILIZAR
+Se procede a crear un algoritmo con las operaciones necesarias para llevar a cabo los calculos solicitados, estos se declaran en una funcion para posteriormente ser llamada en otra seccion del notebook
+
+```{python}
+def adaptive_bubble_sort(lst):
+    lst = move_nones_to_end(lst.copy())
+    n = len(lst)
+    operaciones = 0
+    for i in range(n):
+        swapped = False
+        for j in range(0, n-i-1):
+            operaciones += 1
+            if lst[j] > lst[j+1]:
+                lst[j], lst[j+1] = lst[j+1], lst[j]
+                operaciones += 1
+                swapped = True
+        if not swapped:
+            break
+    return lst, operaciones
+
+def heapsort(lst):
+    lst = move_nones_to_end(lst.copy())
+
+    def heapify(arr, n, i, operaciones):
+        largest = i
+        left = 2 * i + 1
+        right = 2 * i + 2
+
+        if left < n and arr[left] > arr[largest]:
+            largest = left
+        if right < n and arr[right] > arr[largest]:
+            largest = right
+        operaciones += 2
+
+        if largest != i:
+            arr[i], arr[largest] = arr[largest], arr[i]
+            operaciones += 1
+            operaciones = heapify(arr, n, largest, operaciones)
+        return operaciones
+
+    n = len(lst)
+    operaciones = 0
+    for i in range(n // 2 - 1, -1, -1):
+        operaciones = heapify(lst, n, i, operaciones)
+    for i in range(n - 1, 0, -1):
+        lst[i], lst[0] = lst[0], lst[i]
+        operaciones += 1
+        operaciones = heapify(lst, i, 0, operaciones)
+    return lst, operaciones
+
+def optimized_mergesort(lst):
+    lst = move_nones_to_end(lst.copy())
+
+    def merge(arr, l, m, r, operaciones):
+        n1 = m - l + 1
+        n2 = r - m
+
+        # Usar slicing en lugar de copias completas
+        L = arr[l:m+1]
+        R = arr[m+1:r+1]
+
+        i = j = 0
+        k = l
+
+        while i < n1 and j < n2:
+            operaciones += 1
+            if L[i] <= R[j]:
+                arr[k] = L[i]
+                i += 1
+            else:
+                arr[k] = R[j]
+                j += 1
+            k += 1
+
+        while i < n1:
+            arr[k] = L[i]
+            i += 1
+            k += 1
+
+        while j < n2:
+            arr[k] = R[j]
+            j += 1
+            k += 1
+
+        return operaciones
+
+    def sort(arr, l, r, operaciones):
+        if l < r:
+            m = l + (r - l) // 2
+            operaciones = sort(arr, l, m, operaciones)
+            operaciones = sort(arr, m + 1, r, operaciones)
+            operaciones = merge(arr, l, m, r, operaciones)
+        return operaciones
+
+    operaciones = 0
+    operaciones = sort(lst, 0, len(lst) - 1, operaciones)
+    return lst, operaciones
+
+def improved_quicksort(lst):
+    lst = move_nones_to_end(lst.copy())
+
+    def partition(arr, low, high, operaciones):
+        # Selección aleatoria del pivote
+        pivot_idx = random.randint(low, high)
+        arr[pivot_idx], arr[high] = arr[high], arr[pivot_idx]
+        pivot = arr[high]
+
+        i = low - 1
+        for j in range(low, high):
+            operaciones += 1
+            if arr[j] < pivot:
+                i += 1
+                arr[i], arr[j] = arr[j], arr[i]
+                operaciones += 1
+        arr[i + 1], arr[high] = arr[high], arr[i + 1]
+        operaciones += 1
+        return i + 1, operaciones
+
+    def sort(arr, low, high, operaciones):
+        if low < high:
+            pi, operaciones = partition(arr, low, high, operaciones)
+            operaciones = sort(arr, low, pi - 1, operaciones)
+            operaciones = sort(arr, pi + 1, high, operaciones)
+        return operaciones
+
+    operaciones = 0
+    operaciones = sort(lst, 0, len(lst) - 1, operaciones)
+    return lst, operaciones
+
+# Implementación mejorada de Skip List
+class SkipNode:
+    def __init__(self, value=None, level=0):
+        self.value = value
+        self.forward = [None] * level
+
+class ImprovedSkipList:
+    def __init__(self, p=0.5):
+        self.p = p
+        self.max_level = 16  # Nivel máximo razonable
+        self.head = SkipNode(level=self.max_level)
+        self.level = 1
+        self.operaciones = 0
+
+    def random_level(self):
+        lvl = 1
+        while random.random() < self.p and lvl < self.max_level:
+            lvl += 1
+            self.operaciones += 1
+        return lvl
+
+    def insert(self, value):
+        update = [None] * self.max_level
+        current = self.head
+
+        for i in range(self.level - 1, -1, -1):
+            while current.forward[i] and current.forward[i].value < value:
+                current = current.forward[i]
+                self.operaciones += 1
+            update[i] = current
+            self.operaciones += 1
+
+        current = current.forward[0]
+
+        if current is None or current.value != value:
+            new_level = self.random_level()
+
+            if new_level > self.level:
+                for i in range(self.level, new_level):
+                    update[i] = self.head
+                self.level = new_level
+
+            new_node = SkipNode(value, new_level)
+
+            for i in range(new_level):
+                new_node.forward[i] = update[i].forward[i]
+                update[i].forward[i] = new_node
+                self.operaciones += 1
+
+    def to_list(self):
+        result = []
+        current = self.head.forward[0]
+        while current:
+            result.append(current.value)
+            current = current.forward[0]
+        return result
+
+def skip_list_sort(lst):
+    lst = move_nones_to_end(lst.copy())
+    skip_list = ImprovedSkipList()
+    for item in lst:
+        if item is not None:
+            skip_list.insert(item)
+    return skip_list.to_list() + [None] * (len(lst) - len(skip_list.to_list())), skip_list.operaciones
+```
+
+#5-APLICACION DE LOS ALGORITMOS A LOS DATOS
+
+La función
+
+```
+aplicar_algoritmo_lista
+```
+
+ se encarga de aplicar un algoritmo de ordenamiento específico a una lista de datos y medir tanto el tiempo de ejecución como el número de operaciones (comparaciones) realizadas. Primero registra el tiempo inicial antes de ejecutar el algoritmo. Posteriormente llama al algoritmo pasando una copia de la lista original para evitar modificaciones no deseadas. El algoritmo devuelve la lista ordenada y el número de operaciones realizadas. Finalmente, se calcula el tiempo de ejecución restando el tiempo inicial del tiempo actual.
+
+ Por alguna razon que no se logro identificar un error relacionado con el tipo de datos de los archivos, lo que no permitia la ejecucion del codigo en algunas listas, por lo que se empleó un "Try" por si ocurre algún error durante la ejecución, se captura la excepción y se imprime un mensaje de error, devolviendo "None" para el tiempo y las operaciones para poder continuar midiendo aquellos datos a los que si se le puedan aplicar los algoritmos definidos.
+
+```{python}
+""" --- Funcion que aplica los algoritmos a las listas de datos ---"""
+
+def aplicar_algoritmo_lista(lista, algoritmo, nombre_algoritmo):
+    try:
+        inicio_tiempo = time.time()
+        lista_ordenada, operaciones = algoritmo(lista.copy())
+        tiempo_ejecucion = time.time() - inicio_tiempo
+        return tiempo_ejecucion, operaciones
+    except Exception as e:
+        print(f"Error con {nombre_algoritmo}: {e}")
+        return None, None
+```
+
+#6-PROCESAMIENTO DE LOS DATOS
+Se procede a aplicar los diferentes algoritmos de ordenamiento a los datos contenidos en los archivos previamente cargados, y almacenar los resultados en un DataFrame para su posterior análisis. Primero, se define un diccionario resultados_totales que servirá para almacenar los resultados de cada algoritmo aplicado, incluyendo el nombre del archivo, el algoritmo utilizado, el tiempo total de ejecución y el número total de operaciones realizadas. Luego, se itera sobre cada archivo JSON, cargando los datos como una lista. Para cada archivo, se aplican los algoritmos de ordenamiento (Bubble Sort, Heapsort, Mergesort, Quicksort y SkipList) a cada columna (lista) de datos, sumando el tiempo de ejecución y las operaciones realizadas. Estos resultados se almacenan en el diccionario resultados_totales. Finalmente, se crea un DataFrame a partir del diccionario y se guarda en un archivo CSV (resultados_totales.csv) para facilitar su visualización y análisis. Este proceso permite comparar el rendimiento de los algoritmos en términos de tiempo y operaciones para diferentes conjuntos de datos.
+
+```{python}
+#| colab: {base_uri: https://localhost:8080/}
+# Procesamiento de datos y generación de resultados
+resultados_totales = {
+    'Archivo': [],
+    'Algoritmo': [],
+    'Tiempo Total (segundos)': [],
+    'Operaciones Totales': []
+}
+
+algoritmos = [
+    (adaptive_bubble_sort, "Bubble Sort Adaptativo"),
+    (heapsort, "Heapsort"),
+    (optimized_mergesort, "Mergesort Optimizado"),
+    (improved_quicksort, "Quicksort Mejorado"),
+    (skip_list_sort, "SkipList Mejorada")
+]
+
+for nombre_archivo, ruta_archivo in archivos_json.items():
+    print(f"\nProcesando archivo: {nombre_archivo}...")
+    datos = cargar_json_como_lista(ruta_archivo)
+
+    for algoritmo, nombre_algoritmo in algoritmos:
+        tiempo_total = 0
+        operaciones_totales = 0
+
+        for lista in datos:
+            tiempo, ops = aplicar_algoritmo_lista(lista, algoritmo, nombre_algoritmo)
+            if tiempo is not None:
+                tiempo_total += tiempo
+                operaciones_totales += ops
+
+        resultados_totales['Archivo'].append(nombre_archivo)
+        resultados_totales['Algoritmo'].append(nombre_algoritmo)
+        resultados_totales['Tiempo Total (segundos)'].append(tiempo_total)
+        resultados_totales['Operaciones Totales'].append(operaciones_totales)
+
+# Crear DataFrame con los resultados
+df_resultados_totales = pd.DataFrame(resultados_totales)
+df_resultados_totales.to_csv('resultados_mejorados.csv', index=False)
+```
+
+#7-ALMACENAMIENTO DE LOS DATOS
+Se guardan los datos obtenidos de cada uno de los archivos con los tiempos de ejecucion y comparacion de cada algoritmo para posteriormete realizar un analisis y comparacion de cada uno de ellos
+
+```{python}
+# Crear DataFrame con los resultados totales
+df_resultados_totales = pd.DataFrame(resultados_totales)
+```
+
+```{python}
+#| colab: {base_uri: https://localhost:8080/}
+df_resultados_totales
+```
+
+#8-VISUALIZACION DE LOS RESULTADOS
+Se procede a agrupar por tipo de algoritmo utilizado los tiempos de ejecucion de cada archivo para observar como interactuan los resultados conforme se incrementa el nivel de perturbacion
+
+```{python}
+#| colab: {base_uri: https://localhost:8080/}
+df_bubble_sort = df_resultados_totales[df_resultados_totales['Algoritmo'] == 'Bubble Sort']
+df_bubble_sort
+```
+
+```{python}
+#| colab: {base_uri: https://localhost:8080/, height: 237}
+df_heapsort = df_resultados_totales[df_resultados_totales['Algoritmo'] == 'Heapsort']
+df_heapsort
+```
+
+```{python}
+#| colab: {base_uri: https://localhost:8080/, height: 89}
+df_mergesort = df_resultados_totales[df_resultados_totales['Algoritmo'] == 'Mergesort']
+df_mergesort
+```
+
+```{python}
+#| colab: {base_uri: https://localhost:8080/, height: 89}
+df_quicksort = df_resultados_totales[df_resultados_totales['Algoritmo'] == 'Quicksort']
+df_quicksort
+```
+
+```{python}
+#| colab: {base_uri: https://localhost:8080/, height: 89}
+df_skip_list = df_resultados_totales[df_resultados_totales['Algoritmo'] == 'SkipList']
+df_skip_list
+```
+
+#9-CONCLUSIONES
+A partir de los resultados mostrados en los dataframes, se observa que:
+
+
+
+*   Bubble Sort fue el algoritmo más lento en todos los casos, con un tiempo de ejecución significativamente mayor y un número de operaciones más elevado en comparación con los demás algoritmos. Esto era esperado debido a su complejidad algorítmica de O(n^2), lo que lo hace ineficiente para conjuntos de datos grandes.
+
+*   Heapsort y Mergesort mostraron un rendimiento similar, con tiempos de ejecución y operaciones totales considerablemente menores que Bubble Sort. Ambos algoritmos tienen una complejidad de O(nlogn), lo que los hace más eficientes para grandes volúmenes de datos.
+
+*   Quicksort fue el algoritmo más rápido en la mayoría de los casos, con un tiempo de ejecución y número de operaciones ligeramente menor que Heapsort y Mergesort. Sin embargo, su rendimiento puede variar dependiendo de la elección del pivote, aunque en este caso no se observaron problemas significativos.
+
+*   SkipList, aunque es una estructura de datos interesante y eficiente para búsquedas e inserciones, no fue tan rápida como los algoritmos de ordenamiento tradicionales en este contexto. Esto se debe a que su implementación requiere más operaciones para mantener la estructura de niveles, lo que aumenta el tiempo de ejecución y el número de operaciones.
+
+
+
+
+
+
+
+
+
+
+
+
+##9.1-Conclusión general
+Podemos concluir que, para conjuntos de datos grandes con diferentes niveles de perturbación, algoritmos como Quicksort, Heapsort y Mergesort son las mejores opciones debido a su eficiencia y estabilidad. Por otro lado, Bubble Sort y SkipList no son recomendables para este tipo de tareas, ya que su rendimiento no escala adecuadamente con el tamaño de los datos. La elección del algoritmo debe basarse en los requisitos específicos de eficiencia y estabilidad, considerando que Quicksort es generalmente la opción más rápida y eficiente.
+
+#REFERENCIAS
+1- H. CORMEN, T., E. LEISERSON, C., L. RIVEST, R., & STEIN, C. (2022). Introduction to algorithms. MIT Press.
+
+2-Sedgewick, R., & Wayne, K. (2011). Algorithms Fourth Edition. Boston: Pearson Education, Inc. .
+
+
+3-GeeksforGeeks. (n.d.). Sorting algorithms. GeeksforGeeks. Recuperado el 05 de marzo de 2025, de https://www.geeksforgeeks.org/sorting-algorithms/?ref=lbp
+

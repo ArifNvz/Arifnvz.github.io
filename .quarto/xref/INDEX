@@ -1,0 +1,29 @@
+{
+  "about.qmd": {
+    "about.html": "567eb00e"
+  },
+  "quarto/Lib/site-packages/cffi/recompiler.py": {
+    "recompiler.html": "c11bf1c3"
+  },
+  "quarto/Lib/site-packages/httpcore-1.0.9.dist-info/licenses/LICENSE.md": {
+    "LICENSE.html": "b46f1a04"
+  },
+  "quarto/Lib/site-packages/httpx-0.28.1.dist-info/licenses/LICENSE.md": {
+    "LICENSE.html": "13794069"
+  },
+  "quarto/Lib/site-packages/idna-3.10.dist-info/LICENSE.md": {
+    "LICENSE.html": "80226ccd"
+  },
+  "quarto/Lib/site-packages/pyzmq-26.4.0.dist-info/licenses/LICENSE.md": {
+    "LICENSE.html": "db2de558"
+  },
+  "quarto/Lib/site-packages/soupsieve-2.7.dist-info/licenses/LICENSE.md": {
+    "LICENSE.html": "ee6b7b22"
+  },
+  "changelog.qmd": {
+    "changelog.html": "3a3c32f1"
+  },
+  "quarto/Lib/site-packages/numpy/random/LICENSE.md": {
+    "LICENSE.html": "9c490e84"
+  }
+}

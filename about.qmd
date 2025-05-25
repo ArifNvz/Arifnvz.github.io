@@ -1,0 +1,38 @@
+---
+title: "Sobre Mí"
+---
+
+# Arif Narváez de la O
+
+**Ingeniero en Mecatrónica**  
+**Estudiante de Lic. en Economía en la UNAM**  
+**Estudiante de Maestría en Ciencia de Datos e Información en INFOTEC**
+
+## Perfil Profesional
+
+Especialista en web scraping, con experiencia en valuación de activos industriales. 
+Mi necesidad de datos precisos para valuación me llevó a dominar técnicas de extracción y 
+análisis avanzado, desarrollando modelos predictivos de depreciación.
+
+## Contacto
+
+<div class="contact-links">
+  <a href="https://www.linkedin.com/in/arif-narv%C3%A1ez-356abb23b/" target="_blank">
+    <i class="fab fa-linkedin"></i> LinkedIn
+  </a>
+  
+  <a href="https://github.com/ArifNvz?tab=repositories" target="_blank">
+    <i class="fab fa-github"></i> GitHub
+  </a>
+  
+  <a href="https://arifnarvaez.pythonanywhere.com/" target="_blank">
+    <i class="fas fa-briefcase"></i> Portafolio Personal
+  </a>
+</div>
+
+## Habilidades
+
+- Web Scraping estatico y dinamico
+- Aplicacion de Ingenieria inversa para consultas a APIs
+- Orquestadores de trabajo mediante Airflow
+- Procesos ETL
