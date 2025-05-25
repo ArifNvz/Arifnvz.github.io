@@ -12,18 +12,17 @@ El análisis de la complejidad algorítmica es una de las áreas fundamentales e
 En este reporte, realizamos una simulación para comparar estos órdenes de crecimiento y analizar sus tiempos de ejecución en función de diferentes tamaños de entrada. El propósito es entender cómo se comportan los algoritmos con distintos órdenes de crecimiento y cuáles son más adecuados para manejar grandes volúmenes de datos.
 
 ```{python}
-#| executionInfo: {status: ok, timestamp: 1738620547794, user_tz: 360, elapsed: 180, user: {displayName: Arif Narváez de la O, userId: '03142251254644870757'}}
 # se importan las bibliotecas necesarias
 import numpy as np
 import matplotlib.pyplot as plt
 import time
+import math
 ```
 
 Definimos las funciones de complejidad para cada orden de crecimiento
 Vamos a definir las funciones de cada orden de crecimiento que vamos a comparar.
 
 ```{python}
-#| executionInfo: {status: ok, timestamp: 1738620601238, user_tz: 360, elapsed: 184, user: {displayName: Arif Narváez de la O, userId: '03142251254644870757'}}
 def O1(n):
     return np.ones_like(n)
 
@@ -47,7 +46,7 @@ def Oan(n):
 
 def Onfact(n):
     # n! crece muy rápido, así que con valores grandes de n podría ser inabordable.
-    return np.array([np.math.factorial(x) for x in n])
+    return np.array([math.factorial(x) for x in n])
 
 def Onn(n):
     return n**n
@@ -56,7 +55,6 @@ def Onn(n):
 Generamos las gráficas de comparación entre los órdenes de crecimiento. Cada una de estas comparaciones será una figura.
 
 ```{python}
-#| executionInfo: {status: ok, timestamp: 1738627615138, user_tz: 360, elapsed: 155, user: {displayName: Arif Narváez de la O, userId: '03142251254644870757'}}
 n_values_small = np.arange(1, 21)  # se limita  n entre 1 y 20 para evitar numeros muy grandes
 n_values = np.arange(1, 10000)  # para O(1), O(log n), O(n), O(n log n), O(n²), O(n³)
 y_O1 = O1(n_values)
@@ -73,7 +71,6 @@ O(1) es el más eficiente, ya que su tiempo de ejecución es constante, independ
 
 ```{python}
 #| colab: {base_uri: https://localhost:8080/, height: 565}
-#| executionInfo: {status: ok, timestamp: 1738627617168, user_tz: 360, elapsed: 401, user: {displayName: Arif Narváez de la O, userId: '03142251254644870757'}}
 plt.figure(figsize=(10,6))
 plt.plot(n_values, y_O1, label='O(1)', color='r')
 plt.plot(n_values, y_Ologn, label='O(log n)', color='b')
@@ -90,7 +87,6 @@ Los algoritmos con complejidad O(n) crecen linealmente como se puede observar en
 
 ```{python}
 #| colab: {base_uri: https://localhost:8080/, height: 565}
-#| executionInfo: {status: ok, timestamp: 1738627623491, user_tz: 360, elapsed: 338, user: {displayName: Arif Narváez de la O, userId: '03142251254644870757'}}
 y_On = On(n_values)
 y_Onlogn = Onlogn(n_values)
 
@@ -110,7 +106,6 @@ Ambos son órdenes polinómicos, pero O(n³) crece mucho más rápido que O(n²)
 
 ```{python}
 #| colab: {base_uri: https://localhost:8080/, height: 565}
-#| executionInfo: {status: ok, timestamp: 1738627626573, user_tz: 360, elapsed: 331, user: {displayName: Arif Narváez de la O, userId: '03142251254644870757'}}
 y_On2 = On2(n_values)
 y_On3 = On3(n_values)
 
@@ -129,8 +124,7 @@ plt.show()
 Tanto O(a^n) como O(n!) son de crecimiento exponencial y factorial, respectivamente, lo que significa que ambos se vuelven imprácticos rápidamente para cualquier tamaño de n relativamente grandr. En la simulación, ambos órdenes alcanzaron tiempos de ejecución tan altos que no fueron viables ni siquiera con entradas de tamaño moderado.
 
 ```{python}
-#| colab: {base_uri: https://localhost:8080/, height: 600}
-#| executionInfo: {status: ok, timestamp: 1738627738869, user_tz: 360, elapsed: 674, user: {displayName: Arif Narváez de la O, userId: '03142251254644870757'}}
+#| colab: {base_uri: https://localhost:8080/, height: 565}
 # limitamos n porque los valores crecen muy rápido
 n_values_small = np.arange(1, 7)  # se probaron distintos valores y se considera que en el 7 se aprecia mejor el cambio del incremento entre las funciones
 y_Oan = Oan(n_values_small)
@@ -150,8 +144,7 @@ plt.show()
 Finalmente, O(n^n) crece mucho más rápido que O(n!). Ambos son tan ineficientes para tamaños grandes de entrada que en la simulación no pudieron manejarse más allá de valores pequeños de n. Esto resalta lo poco prácticos que son estos algoritmos, incluso para datos de tamaño mediano.
 
 ```{python}
-#| colab: {base_uri: https://localhost:8080/, height: 600}
-#| executionInfo: {status: ok, timestamp: 1738627795843, user_tz: 360, elapsed: 355, user: {displayName: Arif Narváez de la O, userId: '03142251254644870757'}}
+#| colab: {base_uri: https://localhost:8080/, height: 565}
 y_Onfact = Onfact(n_values_small)
 y_Onn = Onn(n_values_small)
 
@@ -172,8 +165,7 @@ Los resultados obtenidos en la simulación muestran que, a medida que el tamaño
 Además, los algoritmos con complejidades exponenciales y factoriales, como O(a^n) y O(n!), no son viables para tamaños de entrada relativamente pequeños, lo que limita su uso a problemas muy específicos y de pequeño tamaño (Van Emden, 2000).
 
 ```{python}
-#| colab: {base_uri: https://localhost:8080/, height: 244}
-#| executionInfo: {status: ok, timestamp: 1738627439037, user_tz: 360, elapsed: 138, user: {displayName: Arif Narváez de la O, userId: '03142251254644870757'}}
+#| colab: {base_uri: https://localhost:8080/, height: 210}
 # Tiempos de ejecución para los tamaños de entrada especificados
 n_values_exec = [1, 10, 100, 1200]
 
