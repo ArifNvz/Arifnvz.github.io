@@ -104,10 +104,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
-
-
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
-
 
 
 <link rel="stylesheet" href="styles.css">
@@ -238,7 +235,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>2 Metodologia y descripcion de los algoritmos</h1>
 <p>Los algoritmos fueron implementados en Python dentro de un entorno de Google Colab, montando archivos JSON desde Google Drive. Cada conjunto fue procesado respetando su estructura: * Conjunto A: pares de listas. * Conjunto B: tripletas de listas. * Conjunto C: tetrapletas de listas.</p>
 <p><em>Librerias Utilizadas</em></p>
-<div id="2d9ecae4" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-execution_count="1">
+<div id="3bf9abc0" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json, time</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -246,7 +243,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> itertools <span class="im">import</span> combinations</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Los algoritmos utilizados fueron: 1. Merge (ME): algoritmo de intersección secuencial eficiente para listas del mismo tamaño. 2. Baeza-Yates (BY): algoritmo recursivo basado en la estrategia dividir para vencer, con tres variantes: * BY-BS: b ́usqueda binaria clásica. * BY-B1 y BY-B2: b ́usquedas no acotadas con diferente crecimiento (doble y lineal). 3. Barbay &amp; Kenyon (BK): algoritmo adaptativo que utiliza memoria para evitar comparaciones redundantes, recomendado para múltiples listas.</p>
-<div id="c30d153b" class="cell" data-execution_count="2">
+<div id="0d58903c" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparaciones globales</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>comparisons <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> reset_comparisons():</span>
@@ -363,7 +360,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="4" type="1">
 <li>Visualización de resultados: Los datos obtenidos se almacenan en un DataFrame y se generan gr ́aficos de caja para comparar métricas como tiempo de ejecución, comparaciones y tama ̃no de la intersección.</li>
 </ol>
-<div id="28e39738" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:222}}" data-execution_count="3">
+<div id="43976ddf" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:222}}" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>path_a <span class="op">=</span> <span class="st">'./archivos/postinglists-for-intersection-A-k=2.json'</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(path_a) <span class="im">as</span> f:</span>
@@ -440,7 +437,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Métricas registradas: Para cada ejecuci ́on se almacena: tiempo, comparaciones y tamaño de la intersección, identificando el algoritmo y el par de listas evaluado (ej:BY-BS (0-1)).</li>
 <li>Visualización: Se generan gráficos de caja para comparar m ́etricas entre BK y los algoritmos por pares.</li>
 </ol>
-<div id="9a74e45d" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:1000}}" data-execution_count="4">
+<div id="ff11dfe2" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:1000}}" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>path_b <span class="op">=</span> <span class="st">'./archivos/postinglists-for-intersection-B-k=3.json'</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(path_b) <span class="im">as</span> f:</span>
@@ -533,7 +530,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="4" type="1">
 <li>Visualización: Los gráficos de caja permiten comparar el rendimiento de BK frente a las intersecciones por pares, destacando el impacto del aumento de dimensionalidad.</li>
 </ol>
-<div id="35c6fe13" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:1000}}" data-execution_count="5">
+<div id="288eb2a1" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:1000}}" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>path_c <span class="op">=</span> <span class="st">'./archivos/postinglists-for-intersection-C-k=4.json'</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(path_c) <span class="im">as</span> f:</span>
@@ -602,7 +599,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="tabla-general-de-resultados" class="level1">
 <h1>4. TABLA GENERAL DE RESULTADOS</h1>
-<div id="7cc40a16" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:423}}" data-execution_count="6">
+<div id="e1c8e70b" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:423}}" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Añadir columna que indique el origen del conjunto</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>df_A[<span class="st">'Dataset'</span>] <span class="op">=</span> <span class="st">'A'</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>df_B[<span class="st">'Dataset'</span>] <span class="op">=</span> <span class="st">'B'</span></span>
@@ -636,7 +633,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">0</td>
 <td>0</td>
 <td>BK</td>
-<td>0.001999</td>
+<td>0.000999</td>
 <td>2121</td>
 <td>2</td>
 <td>A</td>
@@ -645,7 +642,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">1</td>
 <td>0</td>
 <td>BY-B1</td>
-<td>0.001998</td>
+<td>0.000998</td>
 <td>1690</td>
 <td>2</td>
 <td>A</td>
@@ -654,7 +651,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">2</td>
 <td>0</td>
 <td>BY-B2</td>
-<td>0.036966</td>
+<td>0.017983</td>
 <td>1696</td>
 <td>2</td>
 <td>A</td>
@@ -663,7 +660,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">3</td>
 <td>0</td>
 <td>BY-BS</td>
-<td>0.001998</td>
+<td>0.001000</td>
 <td>1696</td>
 <td>2</td>
 <td>A</td>
@@ -672,7 +669,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">4</td>
 <td>0</td>
 <td>ME</td>
-<td>0.023973</td>
+<td>0.016981</td>
 <td>21470</td>
 <td>2</td>
 <td>A</td>
@@ -690,7 +687,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">8595</td>
 <td>199</td>
 <td>ME (0-2)</td>
-<td>0.005997</td>
+<td>0.002997</td>
 <td>4969</td>
 <td>2</td>
 <td>C</td>
@@ -699,7 +696,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">8596</td>
 <td>199</td>
 <td>ME (0-3)</td>
-<td>0.001999</td>
+<td>0.000999</td>
 <td>1640</td>
 <td>0</td>
 <td>C</td>
@@ -708,7 +705,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">8597</td>
 <td>199</td>
 <td>ME (1-2)</td>
-<td>0.003997</td>
+<td>0.001998</td>
 <td>3646</td>
 <td>69</td>
 <td>C</td>
@@ -717,7 +714,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">8598</td>
 <td>199</td>
 <td>ME (1-3)</td>
-<td>0.000999</td>
+<td>0.001000</td>
 <td>306</td>
 <td>71</td>
 <td>C</td>
@@ -726,7 +723,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">8599</td>
 <td>199</td>
 <td>ME (2-3)</td>
-<td>0.003997</td>
+<td>0.001998</td>
 <td>3608</td>
 <td>243</td>
 <td>C</td>
@@ -747,7 +744,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>5.1 Resumen Estadístico</p>
 <p>Los resultados consolidados de los tres conjuntos de datos (A, B y C) muestran el comportamiento de los diferentes algoritmos en t ́erminos de tiempo de ejecución, número de comparaciones y tamaño de la intersección. La Tabla 1 presenta los valores promedio para cada combinación de algoritmo y conjunto de datos.</p>
-<div id="c8ed63dc" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:1000}}" data-execution_count="7">
+<div id="5d940101" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:1000}}" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tabla de resumen estadístico (media)</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>summary <span class="op">=</span> df_all.groupby([<span class="st">'Dataset'</span>, <span class="st">'Algorithm'</span>]).agg({</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Time'</span>: <span class="st">'mean'</span>,</span>
@@ -777,7 +774,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">0</td>
 <td>A</td>
 <td>BK</td>
-<td>0.002892</td>
+<td>0.001124</td>
 <td>1652.510</td>
 <td>18.910</td>
 </tr>
@@ -785,7 +782,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">1</td>
 <td>A</td>
 <td>BY-B1</td>
-<td>0.001763</td>
+<td>0.001039</td>
 <td>1034.655</td>
 <td>10.110</td>
 </tr>
@@ -793,7 +790,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">2</td>
 <td>A</td>
 <td>BY-B2</td>
-<td>0.010515</td>
+<td>0.007263</td>
 <td>1045.080</td>
 <td>10.110</td>
 </tr>
@@ -801,7 +798,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">3</td>
 <td>A</td>
 <td>BY-BS</td>
-<td>0.001734</td>
+<td>0.001134</td>
 <td>1045.080</td>
 <td>10.110</td>
 </tr>
@@ -809,7 +806,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">4</td>
 <td>A</td>
 <td>ME</td>
-<td>0.010520</td>
+<td>0.005664</td>
 <td>8106.315</td>
 <td>18.135</td>
 </tr>
@@ -817,7 +814,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">5</td>
 <td>B</td>
 <td>BK</td>
-<td>0.008552</td>
+<td>0.007433</td>
 <td>7284.740</td>
 <td>23.730</td>
 </tr>
@@ -825,7 +822,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">6</td>
 <td>B</td>
 <td>BY-B1 (0-1)</td>
-<td>0.017334</td>
+<td>0.014486</td>
 <td>12250.235</td>
 <td>440.120</td>
 </tr>
@@ -833,7 +830,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">7</td>
 <td>B</td>
 <td>BY-B1 (0-2)</td>
-<td>0.013772</td>
+<td>0.012713</td>
 <td>8224.630</td>
 <td>171.645</td>
 </tr>
@@ -841,7 +838,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">8</td>
 <td>B</td>
 <td>BY-B1 (1-2)</td>
-<td>0.016745</td>
+<td>0.013637</td>
 <td>12468.190</td>
 <td>339.535</td>
 </tr>
@@ -849,7 +846,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">9</td>
 <td>B</td>
 <td>BY-B2 (0-1)</td>
-<td>0.026452</td>
+<td>0.026320</td>
 <td>12262.060</td>
 <td>440.120</td>
 </tr>
@@ -857,7 +854,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">10</td>
 <td>B</td>
 <td>BY-B2 (0-2)</td>
-<td>0.019722</td>
+<td>0.018862</td>
 <td>8242.470</td>
 <td>171.645</td>
 </tr>
@@ -865,7 +862,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">11</td>
 <td>B</td>
 <td>BY-B2 (1-2)</td>
-<td>0.025966</td>
+<td>0.026091</td>
 <td>12489.165</td>
 <td>339.535</td>
 </tr>
@@ -873,7 +870,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">12</td>
 <td>B</td>
 <td>BY-BS (0-1)</td>
-<td>0.016430</td>
+<td>0.013391</td>
 <td>12262.060</td>
 <td>440.120</td>
 </tr>
@@ -881,7 +878,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">13</td>
 <td>B</td>
 <td>BY-BS (0-2)</td>
-<td>0.010460</td>
+<td>0.011095</td>
 <td>8242.470</td>
 <td>171.645</td>
 </tr>
@@ -889,7 +886,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">14</td>
 <td>B</td>
 <td>BY-BS (1-2)</td>
-<td>0.014042</td>
+<td>0.012873</td>
 <td>12489.165</td>
 <td>339.535</td>
 </tr>
@@ -897,7 +894,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">15</td>
 <td>B</td>
 <td>ME (0-1)</td>
-<td>0.012468</td>
+<td>0.010072</td>
 <td>9632.390</td>
 <td>593.670</td>
 </tr>
@@ -905,7 +902,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">16</td>
 <td>B</td>
 <td>ME (0-2)</td>
-<td>0.011100</td>
+<td>0.009541</td>
 <td>9026.285</td>
 <td>294.800</td>
 </tr>
@@ -913,7 +910,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">17</td>
 <td>B</td>
 <td>ME (1-2)</td>
-<td>0.008937</td>
+<td>0.010165</td>
 <td>8464.165</td>
 <td>451.310</td>
 </tr>
@@ -921,7 +918,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">18</td>
 <td>C</td>
 <td>BK</td>
-<td>0.003831</td>
+<td>0.003886</td>
 <td>3855.715</td>
 <td>8.030</td>
 </tr>
@@ -929,7 +926,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">19</td>
 <td>C</td>
 <td>BY-B1 (0-1)</td>
-<td>0.005964</td>
+<td>0.005855</td>
 <td>3714.390</td>
 <td>82.555</td>
 </tr>
@@ -937,7 +934,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">20</td>
 <td>C</td>
 <td>BY-B1 (0-2)</td>
-<td>0.006164</td>
+<td>0.005370</td>
 <td>4059.915</td>
 <td>115.605</td>
 </tr>
@@ -945,7 +942,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">21</td>
 <td>C</td>
 <td>BY-B1 (0-3)</td>
-<td>0.006124</td>
+<td>0.005235</td>
 <td>4382.240</td>
 <td>116.255</td>
 </tr>
@@ -953,7 +950,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">22</td>
 <td>C</td>
 <td>BY-B1 (1-2)</td>
-<td>0.007006</td>
+<td>0.006189</td>
 <td>4939.140</td>
 <td>121.865</td>
 </tr>
@@ -961,7 +958,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">23</td>
 <td>C</td>
 <td>BY-B1 (1-3)</td>
-<td>0.010780</td>
+<td>0.008627</td>
 <td>7360.245</td>
 <td>186.310</td>
 </tr>
@@ -969,7 +966,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">24</td>
 <td>C</td>
 <td>BY-B1 (2-3)</td>
-<td>0.009097</td>
+<td>0.007009</td>
 <td>5304.480</td>
 <td>135.240</td>
 </tr>
@@ -977,7 +974,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">25</td>
 <td>C</td>
 <td>BY-B2 (0-1)</td>
-<td>0.011723</td>
+<td>0.009196</td>
 <td>3726.245</td>
 <td>82.550</td>
 </tr>
@@ -985,7 +982,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">26</td>
 <td>C</td>
 <td>BY-B2 (0-2)</td>
-<td>0.011549</td>
+<td>0.009721</td>
 <td>4072.010</td>
 <td>115.595</td>
 </tr>
@@ -993,7 +990,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">27</td>
 <td>C</td>
 <td>BY-B2 (0-3)</td>
-<td>0.013028</td>
+<td>0.011984</td>
 <td>4393.730</td>
 <td>116.260</td>
 </tr>
@@ -1001,7 +998,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">28</td>
 <td>C</td>
 <td>BY-B2 (1-2)</td>
-<td>0.012443</td>
+<td>0.011140</td>
 <td>4950.890</td>
 <td>121.855</td>
 </tr>
@@ -1009,7 +1006,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">29</td>
 <td>C</td>
 <td>BY-B2 (1-3)</td>
-<td>0.018987</td>
+<td>0.016694</td>
 <td>7368.885</td>
 <td>186.310</td>
 </tr>
@@ -1017,7 +1014,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">30</td>
 <td>C</td>
 <td>BY-B2 (2-3)</td>
-<td>0.016949</td>
+<td>0.013972</td>
 <td>5315.180</td>
 <td>135.235</td>
 </tr>
@@ -1025,7 +1022,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">31</td>
 <td>C</td>
 <td>BY-BS (0-1)</td>
-<td>0.004920</td>
+<td>0.004111</td>
 <td>3726.245</td>
 <td>82.550</td>
 </tr>
@@ -1033,7 +1030,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">32</td>
 <td>C</td>
 <td>BY-BS (0-2)</td>
-<td>0.003931</td>
+<td>0.005260</td>
 <td>4072.010</td>
 <td>115.595</td>
 </tr>
@@ -1041,7 +1038,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">33</td>
 <td>C</td>
 <td>BY-BS (0-3)</td>
-<td>0.004401</td>
+<td>0.005260</td>
 <td>4393.730</td>
 <td>116.260</td>
 </tr>
@@ -1049,7 +1046,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">34</td>
 <td>C</td>
 <td>BY-BS (1-2)</td>
-<td>0.005185</td>
+<td>0.005106</td>
 <td>4950.890</td>
 <td>121.855</td>
 </tr>
@@ -1057,7 +1054,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">35</td>
 <td>C</td>
 <td>BY-BS (1-3)</td>
-<td>0.010255</td>
+<td>0.008152</td>
 <td>7368.885</td>
 <td>186.310</td>
 </tr>
@@ -1065,7 +1062,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">36</td>
 <td>C</td>
 <td>BY-BS (2-3)</td>
-<td>0.006094</td>
+<td>0.005670</td>
 <td>5315.180</td>
 <td>135.235</td>
 </tr>
@@ -1073,7 +1070,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">37</td>
 <td>C</td>
 <td>ME (0-1)</td>
-<td>0.006727</td>
+<td>0.005820</td>
 <td>5317.380</td>
 <td>149.000</td>
 </tr>
@@ -1081,7 +1078,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">38</td>
 <td>C</td>
 <td>ME (0-2)</td>
-<td>0.005640</td>
+<td>0.005445</td>
 <td>5113.800</td>
 <td>149.180</td>
 </tr>
@@ -1089,7 +1086,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">39</td>
 <td>C</td>
 <td>ME (0-3)</td>
-<td>0.007198</td>
+<td>0.006164</td>
 <td>6027.015</td>
 <td>173.140</td>
 </tr>
@@ -1097,7 +1094,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">40</td>
 <td>C</td>
 <td>ME (1-2)</td>
-<td>0.005745</td>
+<td>0.005495</td>
 <td>5009.885</td>
 <td>205.670</td>
 </tr>
@@ -1105,7 +1102,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">41</td>
 <td>C</td>
 <td>ME (1-3)</td>
-<td>0.007578</td>
+<td>0.006604</td>
 <td>5896.445</td>
 <td>269.180</td>
 </tr>
@@ -1113,7 +1110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">42</td>
 <td>C</td>
 <td>ME (2-3)</td>
-<td>0.007208</td>
+<td>0.006224</td>
 <td>5774.455</td>
 <td>183.950</td>
 </tr>
@@ -1129,7 +1126,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>El an ́alisis comparativo se implementó mediante el siguiente c ́odigo Python, que genera visualizaciones para cada métrica clave:</p>
 <p>El c ́odigo realiza las siguientes funciones: * Define t ́ıtulos descriptivos para cada métrica en español * Genera diagramas de caja (boxplots) para visualizar la distribución de: * Tiempos de ejecución (Fig. 4a) * Número de comparaciones (Fig. 4b) * Longitud de las intersecciones (Fig. 4c) * Configura el dise ̃no para mejor legibilidad: * Tama ̃no de figura adecuado (12x6 pulgadas) showfliers=True para mostrar valores atípicos * Leyenda externa para evitar solapamientos</p>
 <p>Los gráficos resultantes permiten comparar visualmente: * La variabilidad de cada algoritmo entre conjuntos * La presencia de valores at ́ıpicos en las m ́etricas * Las diferencias de rendimiento relativo entre m ́etodos</p>
-<div id="6421a3a4" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:1000}}" data-execution_count="8">
+<div id="d7f63f4d" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:1000}}" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sns.set_style(<span class="st">"whitegrid"</span>)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>sns.set_palette(<span class="st">"husl"</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'figure.facecolor'</span>] <span class="op">=</span> <span class="st">'white'</span></span>
@@ -1194,9 +1191,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-62"><a href="#cb8-62" aria-hidden="true" tabindex="-1"></a>    plt.savefig(<span class="ss">f'boxplot_</span><span class="sc">{</span>metric<span class="sc">}</span><span class="ss">_adjusted.png'</span>, dpi<span class="op">=</span><span class="dv">300</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>)</span>
 <span id="cb8-63"><a href="#cb8-63" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>C:\Users\ThinkPad\AppData\Local\Temp\ipykernel_11248\1707192673.py:8: RuntimeWarning: divide by zero encountered in scalar divide
+<pre><code>C:\Users\ThinkPad\AppData\Local\Temp\ipykernel_9588\1707192673.py:8: RuntimeWarning: divide by zero encountered in scalar divide
   'yscale': 'log' if df_all['Time'].max()/df_all['Time'].min() &gt; 100 else 'linear',
-C:\Users\ThinkPad\AppData\Local\Temp\ipykernel_11248\1707192673.py:46: UserWarning: Attempt to set non-positive ylim on a log-scaled axis will be ignored.
+C:\Users\ThinkPad\AppData\Local\Temp\ipykernel_9588\1707192673.py:46: UserWarning: Attempt to set non-positive ylim on a log-scaled axis will be ignored.
   ax.set_ylim(config["ylim"])</code></pre>
 </div>
 <div class="cell-output cell-output-display">
