@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.31">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>unidad2 – Arif Narváez - Analisis de Algoritmos</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Arif Narváez - Analisis de Algoritmos</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">Sobre Mí</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./unidad1.html"> 
+<span class="menu-text">Unidad 1</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./unidad2.html" aria-current="page"> 
+<span class="menu-text">Unidad 2</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./unidad3.html"> 
+<span class="menu-text">Unidad 3</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./unidad4.html"> 
+<span class="menu-text">Unidad 4</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./unidad5.html"> 
+<span class="menu-text">Unidad 5</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./changelog.html"> 
+<span class="menu-text">Listado de modificaciones</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<p>#INTRODUCCION</p>
+<p>Las operaciones con matrices son fundamentales en computación científica, ingeniería y ciencia de datos. En este reporte, exploramos dos algoritmos clave: * Multiplicación de matrices. * Eliminación Gaussiana/Gauss-Jordan.</p>
+<p>** Objetivo principal ** Comparar el desempeño de estos algoritmos en términos de tiempo de ejecución y conteo de operaciones para matrices aleatorias de tamaño n×n, con valores de n=100,300,1000. Para ello, analizaremos las propiedades matemáticas de las matrices, su impacto en el rendimiento computacional y consideraciones de estabilidad numérica, que es un problema relevante debido a la representación finita de los números en las computadoras.</p>
+<p>#FUNDAMENTOS TEORICOS Propiedades de las Matrices y Rango Las matrices son estructuras matemáticas fundamentales en la solución de sistemas de ecuaciones lineales y otros problemas computacionales. En particular, el rango de una matriz juega un papel crucial en la resolución de sistemas. De acuerdo con la teoría de matrices, una matriz cuadrada n×n tiene rango completo si su rango es n.&nbsp;Esto implica que sus filas (o columnas) son linealmente independientes y que la matriz es invertible. Además, el acceso eficiente a memoria juega un papel crucial en el rendimiento de los algoritmos de matrices, ya que la disposición de los datos en la memoria afecta el tiempo de ejecución (Golub &amp; Van Loan, 2013)</p>
+<p>Multiplicación de Matrices La multiplicación de dos matrices A y B de tamaño n×n se define como:​</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/4QLmRXhpZgAATU0AKgAAAAgABAE7AAIAAAAJAAABSodpAAQAAAABAAABVJydAAEAAAASAAACzOocAAcAAAEMAAAAPgAAAAAc6gAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVGhpbmtQYWQAAAAFkAMAAgAAABQAAAKikAQAAgAAABQAAAK2kpEAAgAAAAMwNQAAkpIAAgAAAAMwNQAA6hwABwAAAQwAAAGWAAAAABzqAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyMDI1OjA1OjI0IDIyOjUyOjIyADIwMjU6MDU6MjQgMjI6NTI6MjIAAABUAGgAaQBuAGsAUABhAGQAAAD/4QQbaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49J++7vycgaWQ9J1c1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCc/Pg0KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyI+PHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj48cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0idXVpZDpmYWY1YmRkNS1iYTNkLTExZGEtYWQzMS1kMzNkNzUxODJmMWIiIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIvPjxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSJ1dWlkOmZhZjViZGQ1LWJhM2QtMTFkYS1hZDMxLWQzM2Q3NTE4MmYxYiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIj48eG1wOkNyZWF0ZURhdGU+MjAyNS0wNS0yNFQyMjo1MjoyMi4wNDU8L3htcDpDcmVhdGVEYXRlPjwvcmRmOkRlc2NyaXB0aW9uPjxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSJ1dWlkOmZhZjViZGQ1LWJhM2QtMTFkYS1hZDMxLWQzM2Q3NTE4MmYxYiIgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIj48ZGM6Y3JlYXRvcj48cmRmOlNlcSB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPjxyZGY6bGk+VGhpbmtQYWQ8L3JkZjpsaT48L3JkZjpTZXE+DQoJCQk8L2RjOmNyZWF0b3I+PC9yZGY6RGVzY3JpcHRpb24+PC9yZGY6UkRGPjwveDp4bXBtZXRhPg0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDw/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" class="img-fluid figure-img"></p>
+<figcaption>Captura.JPG</figcaption>
+</figure>
+</div>
+<p>El algoritmo tradicional tiene una complejidad de O(n³) debido a los tres bucles anidados. Según la segunda edición de “Introduction to Algorithms” de The Massachusetts Institute of Technology, existen métodos avanzados como el algoritmo de Strassen, que reduce la complejidad a O (n^ {2.81}), aunque no se implementó en este experimento.</p>
+<p><strong>Eliminación Gaussiana y Gauss-Jordan</strong></p>
+<p>La eliminación gaussiana es un método estándar para resolver sistemas de ecuaciones lineales, transformando la matriz aumentada en una forma escalonada superior mediante eliminación de filas. Su extensión, Gauss-Jordan, transforma la matriz en la identidad para hallar directamente la inversa. Este proceso sigue los siguientes pasos: * Pivoteo: Selección del elemento pivote. * Eliminación hacia adelante: Conversión de coeficientes en ceros. * Sustitución hacia atrás: Resolución del sistema de ecuaciones.</p>
+<p>El número de operaciones sigue un crecimiento cúbico, similar a la multiplicación de matrices, con una complejidad O(n³).</p>
+<p>#IMPLEMENTACIÓN EN PYTHON</p>
+<p>Se desarrollaron dos versiones:</p>
+<ul>
+<li>Métodos tradicionales con bucles (para el conteo de operaciones).</li>
+<li>Métodos optimizados con NumPy (para mejorar el rendimiento).</li>
+</ul>
+<p><strong>Multiplicación de Matrices</strong></p>
+<p>Se implementó la multiplicación con tres bucles anidados y se contó el número de operaciones de suma y multiplicación.</p>
+<p><strong>Eliminación Gaussiana</strong></p>
+<p>Se utilizó pivoteo parcial y reducción de filas para obtener una matriz triangular superior. Se contabilizaron las operaciones de suma y multiplicación necesarias. Para ambas operaciones, se midió el tiempo de ejecución usando time.time()</p>
+<p>Comenzamos importando las librerías a utilizar</p>
+<div id="f0bf3f26" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Aplicación de una función “Multiplicacion_matriz” para realizar la multiplicación de matrices aplicando un ciclo doble for para recorrer filas y columnas segunda la dimensión especificada por n y guardando en la variable sum_val la iteración de k en A[i,k] * B[k,j]</p>
+<div id="4097f6dc" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#multiplicación de matrices con conteo de operaciones</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Multiplicacion_matriz(A, B):</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> A.shape[<span class="dv">0</span>]</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    C <span class="op">=</span> np.zeros((n, n))</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    operaciones <span class="op">=</span> {<span class="st">"MULTIPLICACIONES"</span>: <span class="dv">0</span>, <span class="st">"SUMAS"</span>: <span class="dv">0</span>}</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>            sum_val <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>                sum_val <span class="op">+=</span> A[i, k] <span class="op">*</span> B[k, j]</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>                operaciones[<span class="st">"MULTIPLICACIONES"</span>] <span class="op">+=</span> <span class="dv">1</span>  <span class="co">#conteo de multiplicación</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>                operaciones[<span class="st">"SUMAS"</span>] <span class="op">+=</span> <span class="dv">1</span> <span class="cf">if</span> k <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="dv">0</span>  <span class="co">#conteo de sumas</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>            C[i, j] <span class="op">=</span> sum_val</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> C, operaciones</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Creamos la función “Gauss_jordan” donde se realiza la eliminación de Gauss-Jordan para resolver un sistema de ecuaciones lineales representado por una matriz aumentada. Primero, convierte la matriz a tipo float para mayor precisión. Luego utiliza un bucle for principal para seleccionar cada pivote (elemento diagonal) y un bucle for secundario para eliminar los elementos debajo del pivote, calculando un factor de multiplicación y actualizando las filas correspondientes. Asi mismo se cuentan las multiplicaciones y sumas realizadas para finalmente devolver la matriz transformada (en forma escalonada) y el conteo de operaciones aritméticas.</p>
+<div id="eeadc529" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#eliminación gaussiana con conteo de operaciones</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Gauss_jordan(A):</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> A.shape[<span class="dv">0</span>]</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    A <span class="op">=</span> A.astype(<span class="bu">float</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    operaciones <span class="op">=</span> {<span class="st">"MULTIPLICACIONES"</span>: <span class="dv">0</span>, <span class="st">"SUMAS"</span>: <span class="dv">0</span>}</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(i<span class="op">+</span><span class="dv">1</span>, n):</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> A[i, i] <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>                <span class="cf">continue</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>            factor <span class="op">=</span> A[j, i] <span class="op">/</span> A[i, i]</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>            operaciones[<span class="st">"MULTIPLICACIONES"</span>] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(i, n):</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>                A[j, k] <span class="op">-=</span> factor <span class="op">*</span> A[i, k]</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>                operaciones[<span class="st">"MULTIPLICACIONES"</span>] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>                operaciones[<span class="st">"SUMAS"</span>] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> A, operaciones</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Posteriormente creamos la funcion “referencia” en donde buscamos comparar el tiempo de ejecución y el número de operaciones realizadas en dos procesos clave: la multiplicación de matrices y la eliminación Gaussiana. Primero, genera dos matrices aleatorias A y Bde tamaño n×n.&nbsp;Luego, mide el tiempo y cuenta las operaciones para multiplicar A y B utilizando la función “Multiplicacion_matriz”. Después, hace lo mismo para aplicar la eliminación Gaussiana a la matriz A usando la función “Gauss_jordan”. Finalmente, devuelve un diccionario con el tamaño de la muestra n, los tiempos de ejecución y los contadores de operaciones para ambos procesos.</p>
+<div id="99fd4ae4" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#tiempos y operaciones</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> referencia(n):</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    A <span class="op">=</span> np.random.rand(n, n)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    B <span class="op">=</span> np.random.rand(n, n)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">#multiplicación de matrices</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    start <span class="op">=</span> time.time()</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    _, ops_mult <span class="op">=</span> Multiplicacion_matriz(A, B)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    time_mult <span class="op">=</span> time.time() <span class="op">-</span> start</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="co">#eliminación Gaussiana</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    start <span class="op">=</span> time.time()</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    _, ops_gauss <span class="op">=</span> Gauss_jordan(A)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    time_gauss <span class="op">=</span> time.time() <span class="op">-</span> start</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">"TAMAÑO DE MUESTRA"</span>: n, <span class="st">"Tiempo Multiplicacion"</span>: time_mult, <span class="st">"Contador Multiplicacion"</span>: ops_mult,</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Tiempo Gauss jordan"</span>: time_gauss, <span class="st">"Contador Gauss jordan"</span>: ops_gauss}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Finalmente aplicamos la función referencia para cada una de las dimensiones estipuladas en el ejercicio.</p>
+<div id="5b31c285" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># definimos las dimensiones solicitadas para n=100, 300, 1000</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>dimensiones <span class="op">=</span> [<span class="dv">100</span>, <span class="dv">300</span>, <span class="dv">1000</span>]</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>resultados <span class="op">=</span> [referencia(n) <span class="cf">for</span> n <span class="kw">in</span> dimensiones]</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>resultados</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>[{'TAMAÑO DE MUESTRA': 100,
+  'Tiempo Multiplicacion': 1.6763124465942383,
+  'Contador Multiplicacion': {'MULTIPLICACIONES': 1000000, 'SUMAS': 990000},
+  'Tiempo Gauss jordan': 0.5732743740081787,
+  'Contador Gauss jordan': {'MULTIPLICACIONES': 338250, 'SUMAS': 333300}},
+ {'TAMAÑO DE MUESTRA': 300,
+  'Tiempo Multiplicacion': 43.346176862716675,
+  'Contador Multiplicacion': {'MULTIPLICACIONES': 27000000, 'SUMAS': 26910000},
+  'Tiempo Gauss jordan': 15.096508264541626,
+  'Contador Gauss jordan': {'MULTIPLICACIONES': 9044750, 'SUMAS': 8999900}},
+ {'TAMAÑO DE MUESTRA': 1000,
+  'Tiempo Multiplicacion': 1645.6655805110931,
+  'Contador Multiplicacion': {'MULTIPLICACIONES': 1000000000,
+   'SUMAS': 999000000},
+  'Tiempo Gauss jordan': 579.7092597484589,
+  'Contador Gauss jordan': {'MULTIPLICACIONES': 333832500,
+   'SUMAS': 333333000}}]</code></pre>
+</div>
+</div>
+<p>La función Multiplicacion_matriz_np realiza la multiplicación de matrices de manera optimizada utilizando la función np.dot de NumPy, que está altamente optimizada para operaciones matriciales. Primero, toma como entrada dos matrices A y B. Luego, mide el tiempo de inicio y ejecuta la multiplicación de matrices usando np.dot(A, B), que calcula el producto matricial de manera eficiente. Después, calcula el tiempo transcurrido restando el tiempo inicial del tiempo final. Finalmente, la función devuelve la matriz resultante C y el tiempo que tomó realizar la multiplicación.</p>
+<div id="fc61e28c" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># funcion optimizada para multiplicación de matrices usando NumPy</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Multiplicacion_matriz_np(A, B):</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    inicio <span class="op">=</span> time.time()</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    C <span class="op">=</span> np.dot(A, B)  <span class="co"># este es el cambio donde realizamos la multiplicación optimizada con NumPy</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    tiempo <span class="op">=</span> time.time() <span class="op">-</span> inicio</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> C, tiempo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>La función “Gauss_jordan_np” realiza la eliminación Gaussiana de manera optimizada, evitando bucles innecesarios y aprovechando operaciones vectorizadas de NumPy. Primero, convierte la matriz A a tipo float para garantizar precisión en los cálculos. Luego, itera sobre cada fila para seleccionar el pivote A[i,i]]. Si el pivote es cero, se salta esa fila. Para cada fila debajo del pivote, calcula un factor de eliminación y actualiza la fila completa desde la columna ii en adelante usando una operación vectorizada (A[j,i:]−=factor∗A[i,i:]), lo que elimina la necesidad de un bucle adicional sobre las columnas. Finalmente, mide el tiempo de ejecución y devuelve la matriz transformada (en forma escalonada) y el tiempo que tomó realizar el proceso.</p>
+<div id="1688d9a7" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># funcion optimizada para eliminación gaussiana sin bucles innecesarios</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Gauss_jordan_np(A):</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    inicio <span class="op">=</span> time.time()</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    A <span class="op">=</span> A.astype(<span class="bu">float</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> A.shape[<span class="dv">0</span>]</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> A[i, i] <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>            <span class="cf">continue</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(i<span class="op">+</span><span class="dv">1</span>, n):</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>            factor <span class="op">=</span> A[j, i] <span class="op">/</span> A[i, i]</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>            A[j, i:] <span class="op">-=</span> factor <span class="op">*</span> A[i, i:]</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    tiempo <span class="op">=</span> time.time() <span class="op">-</span> inicio</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> A, tiempo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>De igual forma que en la implementación del método tradicional se busca comparar el tiempo de ejecución y el número de operaciones realizadas en dos procesos clave: la multiplicación de matrices y la eliminación Gaussiana pero con las funciones optimizadas con numpy.</p>
+<div id="d98fd402" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># funcion optimizada para benchmark</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> referencia_np(n):</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    A <span class="op">=</span> np.random.rand(n, n)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    B <span class="op">=</span> np.random.rand(n, n)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># multiplicación de matrices optimizada</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    _, time_mult <span class="op">=</span> Multiplicacion_matriz_np(A, B)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># eliminación Gaussiana optimizada</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    _, time_gauss <span class="op">=</span> Gauss_jordan_np(A)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">"TAMAÑO DE MUESTRA"</span>: n, <span class="st">"Tiempo multiplicacion"</span>: time_mult, <span class="st">"Tiempo Gauss-Jordan"</span>: time_gauss}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Finalmente aplicamos la función referencia para cada una de las dimensione estipuladas en el ejercicio.</p>
+<div id="7917c357" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>dimensiones_op <span class="op">=</span> [<span class="dv">100</span>, <span class="dv">300</span>, <span class="dv">1000</span>]</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>resultados_np <span class="op">=</span> [referencia_np(n) <span class="cf">for</span> n <span class="kw">in</span> dimensiones_op]</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>resultados_np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>[{'TAMAÑO DE MUESTRA': 100,
+  'Tiempo multiplicacion': 0.04202413558959961,
+  'Tiempo Gauss-Jordan': 0.07374453544616699},
+ {'TAMAÑO DE MUESTRA': 300,
+  'Tiempo multiplicacion': 0.002614736557006836,
+  'Tiempo Gauss-Jordan': 0.5609169006347656},
+ {'TAMAÑO DE MUESTRA': 1000,
+  'Tiempo multiplicacion': 0.08492684364318848,
+  'Tiempo Gauss-Jordan': 9.130043983459473}]</code></pre>
+</div>
+</div>
+<p>#MATRICES DISPERSAS</p>
+<div id="74435ced" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.sparse <span class="im">as</span> sp</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># realizamos el ejercicio mas significativo con n=1000</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">1000</span>  <span class="co"># Tamaño de la matriz (n x n)</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>densidad <span class="op">=</span> <span class="fl">0.01</span>  <span class="co"># especificamos un porcentaje de elementos no nulos en la matriz dispersa</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># se crea una matriz dispersa aleatoria</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>A_dispersa <span class="op">=</span> sp.random(n, n, density<span class="op">=</span>densidad, <span class="bu">format</span><span class="op">=</span><span class="st">'csr'</span>)  <span class="co"># las siglas csr hacen referencia a Compressed Sparse Row</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>B_dispersa <span class="op">=</span> sp.random(n, n, density<span class="op">=</span>densidad, <span class="bu">format</span><span class="op">=</span><span class="st">'csr'</span>)</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="co"># multiplicación de matrices dispersas</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> multiplicacion_dispersa(A, B):</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    inicio <span class="op">=</span> time.time()</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>    C <span class="op">=</span> A.dot(B)  <span class="co"># multiplicación optimizada para matrices dispersas</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    tiempo <span class="op">=</span> time.time() <span class="op">-</span> inicio</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> C, tiempo</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="co">#eliminación Gaussiana en matrices dispersas</span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> gauss_jordan_dispersa(A):</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>    inicio <span class="op">=</span> time.time()</span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>    A <span class="op">=</span> A.astype(<span class="bu">float</span>)</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> A.shape[<span class="dv">0</span>]</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> A[i, i] <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>            <span class="cf">continue</span></span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(i<span class="op">+</span><span class="dv">1</span>, n):</span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>            factor <span class="op">=</span> A[j, i] <span class="op">/</span> A[i, i]</span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>            A[j, i:] <span class="op">-=</span> factor <span class="op">*</span> A[i, i:]</span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>    tiempo <span class="op">=</span> time.time() <span class="op">-</span> inicio</span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> A, tiempo</span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>C_dispersa, tiempo_dispersa <span class="op">=</span> multiplicacion_dispersa(A_dispersa, B_dispersa)</span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Tiempo multiplicación dispersa: </span><span class="sc">{</span>tiempo_dispersa<span class="sc">:.4f}</span><span class="ss"> segundos"</span>)</span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>A_dispersa_gauss, tiempo_gauss_dispersa <span class="op">=</span> gauss_jordan_dispersa(A_dispersa.toarray())  <span class="co"># convertir a densa para el cálculo</span></span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Tiempo eliminación Gaussiana (dispersa, convertida a densa): </span><span class="sc">{</span>tiempo_gauss_dispersa<span class="sc">:.4f}</span><span class="ss"> segundos"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tiempo multiplicación dispersa: 0.0033 segundos
+Tiempo eliminación Gaussiana (dispersa, convertida a densa): 0.1106 segundos</code></pre>
+</div>
+</div>
+<p>#ANALISIS DE LOS RESULTADOS * Considerando únicamente n=1000 podemos observar que en la multiplicación de matrices como la eliminación gauss jordan y la multiplicación con NumPy es casi 10,000 veces más rápida que el método tradicional. * La eliminación gaussiana tiene un crecimiento cúbico en tiempo debido al gran número de operaciones requeridas.</p>
+<p><strong>Impacto del Acceso a Memoria</strong></p>
+<p>El acceso eficiente a memoria es clave en operaciones matriciales: * NumPy optimiza la multiplicación aprovechando acceso contiguo a memoria y vectorización, describiendo así la ausencia de bucles, indexaciones, etc. explícitos en el código (NumPy Org, 2025). * La eliminación gaussiana es más costosa, ya que requiere múltiples modificaciones en la estructura de la matriz, lo que genera saltos de memoria y reduce la eficiencia del caché.</p>
+<p>#CONCLUSIONES El impacto de acceder a elementos contiguos en memoria en una matriz es significativo en términos de eficiencia y rendimiento (NumPy Org, 2025). Cuando los datos están almacenados de manera contigua (como en los arreglos de NumPy), el acceso a la memoria es más rápido debido a la localidad espacial, lo que permite un mejor uso de la caché del procesador y reduce los tiempos de acceso. Esto es especialmente importante en operaciones matriciales, donde se accede repetidamente a grandes bloques de datos.</p>
+<p>Por otro lado, si se utilizan matrices dispersas (donde la mayoría de los elementos son cero), el acceso a los datos no contiguos y la gestión de la memoria pueden volverse más costosos en términos de tiempo y espacio. Si se trabaja con matrices dispersas, se deben utilizar estructuras de datos especializadas (SciPy Org, 2025) para almacenar solo los elementos no nulos y sus posiciones. Esto reduce el uso de memoria, pero introduce costos adicionales en las operaciones, como:</p>
+<ul>
+<li>Mayor complejidad algorítmica: Las operaciones básicas (como multiplicación o eliminación Gaussiana) requieren algoritmos específicos para manejar la dispersión.</li>
+<li>Sobrecarga de índices: Se necesita almacenar información adicional (como filas, columnas y valores no nulos), lo que aumenta el overhead.</li>
+<li>Acceso no contiguo: El acceso a elementos dispersos puede ser más lento debido a la falta de localidad espacial en la memoria.</li>
+</ul>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>Copyright © 2025 Arif Narváez</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

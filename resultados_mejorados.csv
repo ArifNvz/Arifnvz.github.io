@@ -1,31 +1,31 @@
 Archivo,Algoritmo,Tiempo Total (segundos),Operaciones Totales
-lista_post_p016,Bubble Sort Adaptativo,545.4055678844452,1241375084
-lista_post_p016,Heapsort,4.832498550415039,7149846
-lista_post_p016,Mergesort Optimizado,2.164351463317871,1572444
-lista_post_p016,Quicksort Mejorado,2.9582409858703613,4156737
-lista_post_p016,SkipList Mejorada,4.8634724617004395,5007548
-lista_post_p032,Bubble Sort Adaptativo,536.7739582061768,1234395441
-lista_post_p032,Heapsort,3.971301794052124,7143747
-lista_post_p032,Mergesort Optimizado,2.2678868770599365,1669236
-lista_post_p032,Quicksort Mejorado,2.1679794788360596,4142695
-lista_post_p032,SkipList Mejorada,6.092326641082764,5045098
-lista_post_p064,Bubble Sort Adaptativo,578.6392862796783,1298424914
-lista_post_p064,Heapsort,3.5382556915283203,7134135
-lista_post_p064,Mergesort Optimizado,2.0211122035980225,1755354
-lista_post_p064,Quicksort Mejorado,2.0101287364959717,4238745
-lista_post_p064,SkipList Mejorada,7.373131275177002,5059328
-lista_post_p128,Bubble Sort Adaptativo,570.0726521015167,1316731629
-lista_post_p128,Heapsort,4.887449026107788,7112061
-lista_post_p128,Mergesort Optimizado,3.1420726776123047,1844035
-lista_post_p128,Quicksort Mejorado,3.3262341022491455,4191140
-lista_post_p128,SkipList Mejorada,7.178314924240112,5083071
-lista_post_p256,Bubble Sort Adaptativo,581.7601854801178,1333628216
-lista_post_p256,Heapsort,4.757568120956421,7079295
-lista_post_p256,Mergesort Optimizado,1.6494653224945068,1915028
-lista_post_p256,Quicksort Mejorado,1.8872435092926025,4117944
-lista_post_p256,SkipList Mejorada,5.778149604797363,4975169
-lista_post_p512,Bubble Sort Adaptativo,441.71989607810974,1357473311
-lista_post_p512,Heapsort,2.6175622940063477,7032459
-lista_post_p512,Mergesort Optimizado,1.886220932006836,1975697
-lista_post_p512,Quicksort Mejorado,1.9539439678192139,4209766
-lista_post_p512,SkipList Mejorada,6.857788801193237,4903654
+lista_post_p016,Bubble Sort Adaptativo,429.21230840682983,1241375084
+lista_post_p016,Heapsort,3.9508602619171143,7149846
+lista_post_p016,Mergesort Optimizado,2.1899263858795166,1572444
+lista_post_p016,Quicksort Mejorado,2.3484418392181396,4204106
+lista_post_p016,SkipList Mejorada,5.849210023880005,5036978
+lista_post_p032,Bubble Sort Adaptativo,449.907235622406,1234395441
+lista_post_p032,Heapsort,3.683267593383789,7143747
+lista_post_p032,Mergesort Optimizado,1.7422890663146973,1669236
+lista_post_p032,Quicksort Mejorado,2.4173099994659424,4321781
+lista_post_p032,SkipList Mejorada,5.964133262634277,5090126
+lista_post_p064,Bubble Sort Adaptativo,488.1617000102997,1298424914
+lista_post_p064,Heapsort,4.071537494659424,7134135
+lista_post_p064,Mergesort Optimizado,1.6133217811584473,1755354
+lista_post_p064,Quicksort Mejorado,1.976348876953125,4100935
+lista_post_p064,SkipList Mejorada,5.035250425338745,5100895
+lista_post_p128,Bubble Sort Adaptativo,489.19264698028564,1316731629
+lista_post_p128,Heapsort,4.428272008895874,7112061
+lista_post_p128,Mergesort Optimizado,2.327761650085449,1844035
+lista_post_p128,Quicksort Mejorado,2.4585072994232178,4344266
+lista_post_p128,SkipList Mejorada,5.189517021179199,5002218
+lista_post_p256,Bubble Sort Adaptativo,501.0195813179016,1333628216
+lista_post_p256,Heapsort,4.4540815353393555,7079295
+lista_post_p256,Mergesort Optimizado,2.3689987659454346,1915028
+lista_post_p256,Quicksort Mejorado,2.480926752090454,4241314
+lista_post_p256,SkipList Mejorada,5.957111120223999,4985533
+lista_post_p512,Bubble Sort Adaptativo,513.2547369003296,1357473311
+lista_post_p512,Heapsort,3.9393539428710938,7032459
+lista_post_p512,Mergesort Optimizado,2.1677284240722656,1975697
+lista_post_p512,Quicksort Mejorado,2.2258388996124268,4299766
+lista_post_p512,SkipList Mejorada,4.625292062759399,4850968
