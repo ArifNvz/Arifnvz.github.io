@@ -14,14 +14,12 @@ Los archivos JSON contienen listas de números que representan conjuntos de dato
 #1- IMPORTACION DE LAS LIBRERIAS
 
 ```{python}
-#| colab: {base_uri: https://localhost:8080/}
 import time
 import json
 import pandas as pd
 import matplotlib.pyplot as plt
 import random
-from google.colab import drive
-drive.mount('/content/drive')
+import io
 ```
 
 #2-RUTA DE ACCESO PARA LOS ARCHIVOS
@@ -29,14 +27,13 @@ drive.mount('/content/drive')
 La variable ruta almacena la generalidad del path donde se encuentran alojados los archivos y en conjunto de un diccionario se concatenan los nombres de los archivos. La finalidad de crear un ruta por medio de un diccionario es que se presentaron problemas de dimensionalidad al querer guardar os datos cargados en una lista, por ello se opto por mejor crear una funcion que cargue y lea los archivos iterando cada una de las rutas de los archivos para despues aplicar los algoritmos que señala el ejercicio.
 
 ```{python}
-ruta = "/content/drive/MyDrive/materiales/listas-posteo-con-perturbaciones/listas-posteo-con-perturbaciones-p="
 archivos_json = {
-    "lista_post_p016": ruta + "016.json",
-    "lista_post_p032": ruta + "032.json",
-    "lista_post_p064": ruta + "064.json",
-    "lista_post_p128": ruta + "128.json",
-    "lista_post_p256": ruta + "256.json",
-    "lista_post_p512": ruta + "512.json"
+    "lista_post_p016": "./archivos/listas-posteo-con-perturbaciones-p=016.json",
+    "lista_post_p032": "./archivos/listas-posteo-con-perturbaciones-p=032.json",
+    "lista_post_p064": "./archivos/listas-posteo-con-perturbaciones-p=064.json",
+    "lista_post_p128": "./archivos/listas-posteo-con-perturbaciones-p=128.json",
+    "lista_post_p256": "./archivos/listas-posteo-con-perturbaciones-p=256.json",
+    "lista_post_p512": "./archivos/listas-posteo-con-perturbaciones-p=512.json"
 }
 ```
 
@@ -48,6 +45,7 @@ cargar_json_como_lista
  se encarga de leer un archivo JSON y convertirlo en una lista de listas, lo cual es útil para procesar datos estructurados. Primero, abre el archivo JSON en modo lectura y carga su contenido utilizando la función json.load. Luego se verifica la estructura del JSON cargado: si es un diccionario, extrae los valores (que se espera que sean listas) y los convierte en una lista de listas esta es una medida preventiva para evitar problemas con los tipos de datos a la hora de aplicar los algoritmos; posteriormente si es una lista de listas, la utiliza directamente. Si el archivo JSON no tiene una estructura válida (es decir, no es un diccionario ni una lista de listas), la función lanza una excepción ValueError indicando que la estructura no es compatible.
 
 ```{python}
+#| colab: {base_uri: https://localhost:8080/}
 # Función para cargar un archivo JSON como lista de listas
 def cargar_json_como_lista(ruta_archivo):
     with open(ruta_archivo, 'r') as archivo:
@@ -62,7 +60,6 @@ def cargar_json_como_lista(ruta_archivo):
         return data
     else:
         raise ValueError("El archivo JSON no tiene una estructura válida.")
-
 
   # Funciones auxiliares para manejo de None
 def move_nones_to_end(lst):
@@ -301,7 +298,7 @@ def aplicar_algoritmo_lista(lista, algoritmo, nombre_algoritmo):
 Se procede a aplicar los diferentes algoritmos de ordenamiento a los datos contenidos en los archivos previamente cargados, y almacenar los resultados en un DataFrame para su posterior análisis. Primero, se define un diccionario resultados_totales que servirá para almacenar los resultados de cada algoritmo aplicado, incluyendo el nombre del archivo, el algoritmo utilizado, el tiempo total de ejecución y el número total de operaciones realizadas. Luego, se itera sobre cada archivo JSON, cargando los datos como una lista. Para cada archivo, se aplican los algoritmos de ordenamiento (Bubble Sort, Heapsort, Mergesort, Quicksort y SkipList) a cada columna (lista) de datos, sumando el tiempo de ejecución y las operaciones realizadas. Estos resultados se almacenan en el diccionario resultados_totales. Finalmente, se crea un DataFrame a partir del diccionario y se guarda en un archivo CSV (resultados_totales.csv) para facilitar su visualización y análisis. Este proceso permite comparar el rendimiento de los algoritmos en términos de tiempo y operaciones para diferentes conjuntos de datos.
 
 ```{python}
-#| colab: {base_uri: https://localhost:8080/}
+#| colab: {base_uri: https://localhost:8080/, height: 384}
 # Procesamiento de datos y generación de resultados
 resultados_totales = {
     'Archivo': [],

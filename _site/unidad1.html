@@ -104,7 +104,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
+
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
 
 
 <link rel="stylesheet" href="styles.css">
@@ -140,15 +143,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Unidad 2</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./unidad3.html"> 
+    <a class="nav-link" href="./unidad3.qmd"> 
 <span class="menu-text">Unidad 3</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./unidad4.html"> 
+    <a class="nav-link" href="./unidad4.qmd"> 
 <span class="menu-text">Unidad 4</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./unidad5.html"> 
+    <a class="nav-link" href="./unidad5.qmd"> 
 <span class="menu-text">Unidad 5</span></a>
   </li>  
   <li class="nav-item">
@@ -192,7 +195,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>ARIF NARVAEZ DE LA O</p>
 <p>#INTRODUCCION El análisis de la complejidad algorítmica es una de las áreas fundamentales en la teoría de la computación, ya que permite estimar el rendimiento de un algoritmo en función del tamaño de su entrada. Este análisis se realiza mediante las notaciones de orden de crecimiento, que nos permiten clasificar los algoritmos según su eficiencia a medida que aumenta el tamaño de la entrada (Cormen et al., 2009). Estas notaciones, como O(1), O(log n), O(n), O(n log n), O(n²), O(n³), O(a^n), O(n!) y O(n^n), representan diferentes tasas de crecimiento y ayudan a comparar la eficiencia de distintos algoritmos bajo condiciones similares (Sedgewick &amp; Wayne, 2011).</p>
 <p>En este reporte, realizamos una simulación para comparar estos órdenes de crecimiento y analizar sus tiempos de ejecución en función de diferentes tamaños de entrada. El propósito es entender cómo se comportan los algoritmos con distintos órdenes de crecimiento y cuáles son más adecuados para manejar grandes volúmenes de datos.</p>
-<div id="449f72a4" class="cell" data-execution_count="1">
+<div id="c4202d70" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># se importan las bibliotecas necesarias</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -200,7 +203,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Definimos las funciones de complejidad para cada orden de crecimiento Vamos a definir las funciones de cada orden de crecimiento que vamos a comparar.</p>
-<div id="86d5f8d3" class="cell" data-execution_count="2">
+<div id="b7b6c119" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> O1(n):</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.ones_like(n)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -230,7 +233,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> n<span class="op">**</span>n</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Generamos las gráficas de comparación entre los órdenes de crecimiento. Cada una de estas comparaciones será una figura.</p>
-<div id="baab5c76" class="cell" data-execution_count="3">
+<div id="0d7c0442" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>n_values_small <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">21</span>)  <span class="co"># se limita  n entre 1 y 20 para evitar numeros muy grandes</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>n_values <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">10000</span>)  <span class="co"># para O(1), O(log n), O(n), O(n log n), O(n²), O(n³)</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>y_O1 <span class="op">=</span> O1(n_values)</span>
@@ -242,7 +245,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>##1. O(1) vs O(log n)</p>
 <p>O(1) es el más eficiente, ya que su tiempo de ejecución es constante, independientemente del tamaño de la entrada. En comparación, O(log n) el tiempo crece lentamente conforme n aumenta. En los resultados de la simulación, O(1) se mantuvo constante, mientras que O(log n) creció poco a poco, aunque de forma manejable.</p>
-<div id="a0116bae" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:565}}" data-execution_count="4">
+<div id="6b319186" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:565}}" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">6</span>))</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>plt.plot(n_values, y_O1, label<span class="op">=</span><span class="st">'O(1)'</span>, color<span class="op">=</span><span class="st">'r'</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>plt.plot(n_values, y_Ologn, label<span class="op">=</span><span class="st">'O(log n)'</span>, color<span class="op">=</span><span class="st">'b'</span>)</span>
@@ -261,7 +264,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>##2. O(n) vs O(n log n) Los algoritmos con complejidad O(n) crecen linealmente como se puede observar en la grafica. Por otro lado, O(n log n) tiene un pequeño crecimiento adicional por el término logarítmico, que se vuelve significativo a medida que n aumenta. En las simulaciones, O(n log n) empezó a mostrar tiempos mayores conforme aumentaba n, aunque no tanto como O(n²).</p>
-<div id="af6f9ef8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:565}}" data-execution_count="5">
+<div id="282d76bc" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:565}}" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>y_On <span class="op">=</span> On(n_values)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>y_Onlogn <span class="op">=</span> Onlogn(n_values)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -283,7 +286,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>##3. O(n²) vs O(n³) Ambos son órdenes polinómicos, pero O(n³) crece mucho más rápido que O(n²). Aunque ambos parecen razonables para n pequeños, el crecimiento de O(n³) es más pronunciado, volviéndose mucho más lento cuando n es grande. O(n³) mostró tiempos de ejecución significativamente mayores que O(n²) en la simulación.</p>
-<div id="dd098715" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:565}}" data-execution_count="6">
+<div id="ba4a12df" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:565}}" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>y_On2 <span class="op">=</span> On2(n_values)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>y_On3 <span class="op">=</span> On3(n_values)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -305,7 +308,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>##4. O(a^n) vs O(n!) Tanto O(a^n) como O(n!) son de crecimiento exponencial y factorial, respectivamente, lo que significa que ambos se vuelven imprácticos rápidamente para cualquier tamaño de n relativamente grandr. En la simulación, ambos órdenes alcanzaron tiempos de ejecución tan altos que no fueron viables ni siquiera con entradas de tamaño moderado.</p>
-<div id="58cbfab5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:565}}" data-execution_count="7">
+<div id="373583ef" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:565}}" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># limitamos n porque los valores crecen muy rápido</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>n_values_small <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">7</span>)  <span class="co"># se probaron distintos valores y se considera que en el 7 se aprecia mejor el cambio del incremento entre las funciones</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>y_Oan <span class="op">=</span> Oan(n_values_small)</span>
@@ -328,7 +331,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>##5. O(n!) vs O(n^n) Finalmente, O(n^n) crece mucho más rápido que O(n!). Ambos son tan ineficientes para tamaños grandes de entrada que en la simulación no pudieron manejarse más allá de valores pequeños de n.&nbsp;Esto resalta lo poco prácticos que son estos algoritmos, incluso para datos de tamaño mediano.</p>
-<div id="1a5a52f3" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:565}}" data-execution_count="8">
+<div id="0ee0cfac" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:565}}" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>y_Onfact <span class="op">=</span> Onfact(n_values_small)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>y_Onn <span class="op">=</span> Onn(n_values_small)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -351,7 +354,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>##RESUMEN DE LO OBSERVADO Los resultados obtenidos en la simulación muestran que, a medida que el tamaño de la entrada crece, los algoritmos con complejidades como O(n²) y O(n³) se vuelven significativamente más lentos. Esto se debe al crecimiento polinómico de sus tiempos de ejecución. Por el contrario, los algoritmos con complejidades más eficientes, como O(1) y O(log n), mantienen tiempos de ejecución bajos incluso con entradas más grandes. Esto demuestra que, en situaciones prácticas, es crucial seleccionar algoritmos con menor orden de crecimiento para obtener un rendimiento óptimo (Goodrich &amp; Tamassia, 2014).</p>
 <p>Además, los algoritmos con complejidades exponenciales y factoriales, como O(a^n) y O(n!), no son viables para tamaños de entrada relativamente pequeños, lo que limita su uso a problemas muy específicos y de pequeño tamaño (Van Emden, 2000).</p>
-<div id="654327bc" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:210}}" data-execution_count="9">
+<div id="fadf2a09" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:210}}" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tiempos de ejecución para los tamaños de entrada especificados</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>n_values_exec <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1200</span>]</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -379,7 +382,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>])</span>
 <span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>C:\Users\ThinkPad\AppData\Local\Temp\ipykernel_12828\1471029027.py:20: RuntimeWarning: overflow encountered in exp
+<pre><code>C:\Users\ThinkPad\AppData\Local\Temp\ipykernel_208\1471029027.py:20: RuntimeWarning: overflow encountered in exp
   return np.exp(n)</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="9">

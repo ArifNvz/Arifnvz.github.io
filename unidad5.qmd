@@ -1,8 +1,8 @@
 ---
+title: 5A. Reporte escrito. Experimentos y análisis de algoritmos de intersección de conjuntos.
 jupyter: python3
 ---
 
-#5A. Reporte escrito. Experimentos y análisis de algoritmos de intersección de conjuntos.
 
 Analisis de Algoritmos
 
@@ -10,7 +10,8 @@ Arif Narvaez de la O.
 
 May 18, 2025
 
-#1 Introducción
+
+# 1 Introducción
 
 El problema de la intersección de conjuntos es fundamental en muchas áreas de la computación, especialmente en recuperación de información, donde los conjuntos representan listas invertidas de documentos que contienen ciertos términos. Este reporte estudia la eficiencia de diferentes algoritmos de intersección aplicados a listas ordenadas de enteros, modelando costos en tiempo de ejecución y número de comparaciones.
 
@@ -31,8 +32,6 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
 from itertools import combinations
-from google.colab import drive
-drive.mount('/content/drive')
 ```
 
 Los algoritmos utilizados fueron:
@@ -144,9 +143,9 @@ def barbay_kenyon(lists, search_fn=binary_search):
     return result
 ```
 
-#3. PROCESAMIENTO DE CONJUNTO DE DATOS
+# 3. PROCESAMIENTO DE CONJUNTO DE DATOS
 
-##3.1 Procesamiento del Conjunto A
+## 3.1 Procesamiento del Conjunto A
 El Conjunto A consiste en pares de listas almacenadas en un archivo JSON, las cuales son procesadas para calcular sus intersecciones utilizando distintos algoritmos. A continuación,se detalla el procedimiento:
 1. Carga del archivo JSON: Se lee el archivo ubicado en la ruta especificada, el cual contiene una lista de pares de listas. Estos datos se cargan en memoria utilizando la biblioteca json.
 
@@ -159,7 +158,7 @@ y se generan gr ́aficos de caja para comparar métricas como tiempo de ejecuci�
 
 ```{python}
 #| colab: {base_uri: https://localhost:8080/, height: 222}
-path_a = '/content/drive/MyDrive/materiales/postinglists-for-intersection-A-k=2.json'
+path_a = './archivos/postinglists-for-intersection-A-k=2.json'
 
 with open(path_a) as f:
     data = json.load(f)
@@ -211,7 +210,7 @@ a todas las combinaciones posibles de pares de listas dentro de cada triplete.
 
 ```{python}
 #| colab: {base_uri: https://localhost:8080/, height: 1000}
-path_b = '/content/drive/MyDrive/materiales/postinglists-for-intersection-B-k=3.json'
+path_b = './archivos/postinglists-for-intersection-B-k=3.json'
 
 with open(path_b) as f:
     data = json.load(f)
@@ -262,7 +261,7 @@ for metric in ['Time', 'Comparisons', 'Length']:
     plt.show()
 ```
 
-##3.3 Procesamiento del Conjunto C
+## 3.3 Procesamiento del Conjunto C
 El Conjunto C extiende el análisis a tétradas de listas (k=4), lo que permite evaluar elcomportamiento de los algoritmos en un contexto de mayor dimensionalidad. Este enfoque introduce una complejidad adicional al aumentar el número de posibles combinaciones por pares.
 
 1. Carga del archivo JSON: Se lee el archivo ubicado en postinglists-for-intersection-C-k=4.json, cargando t ́etradas de listas en memoria.
@@ -278,7 +277,7 @@ anteriores (ME, BY-BS, BY-B1, BY-B2), pero ahora sobre las 42 = 6 combinaciones 
 
 ```{python}
 #| colab: {base_uri: https://localhost:8080/, height: 1000}
-path_c = '/content/drive/MyDrive/materiales/postinglists-for-intersection-C-k=4.json'
+path_c = './archivos/postinglists-for-intersection-C-k=4.json'
 
 with open(path_c) as f:
     data = json.load(f)
@@ -322,7 +321,7 @@ for metric in ['Time', 'Comparisons', 'Length']:
     plt.show()
 ```
 
-#4. TABLA GENERAL DE RESULTADOS
+# 4. TABLA GENERAL DE RESULTADOS
 
 ```{python}
 #| colab: {base_uri: https://localhost:8080/, height: 423}
@@ -340,7 +339,7 @@ df_all_sorted = df_all.sort_values(by=['Dataset', 'Group', 'Algorithm']).reset_i
 display(df_all_sorted)
 ```
 
-#5 Análisis de Resultados
+# 5 Análisis de Resultados
 Los datos muestran que:
 * El algoritmo BK mantiene un tiempo de ejecución consistente a través de los diferentes conjuntos, siendo particularmente eficiente para intersecciones m ́ultiples.
 * Las versiones BY-BS y BY-B1 muestran los mejores tiempos para intersecciones binarias, mientras que BY-B2 resulta significativamente más lento.
@@ -365,7 +364,7 @@ summary = df_all.groupby(['Dataset', 'Algorithm']).agg({
 display(summary)
 ```
 
-#6 REPRESENTACION GRAFICA DE RESULTADOS ESTADISTICOS
+# 6 REPRESENTACION GRAFICA DE RESULTADOS ESTADISTICOS
 El an ́alisis comparativo se implementó mediante el siguiente c ́odigo Python, que genera visualizaciones para cada métrica clave:
 
 El c ́odigo realiza las siguientes funciones:
@@ -451,7 +450,7 @@ for metric in ['Time', 'Comparisons', 'Length']:
 
 ```
 
-# 7 6 Conclusiones
+# 7 Conclusiones
 Los experimentos realizados sobre los tres conjuntos de datos (A, B y C) permiten extraer conclusiones significativas sobre el comportamiento de los diferentes algoritmos de intersección evaluados.
 
 En primer lugar, el algoritmo Barbay-Kenyon (BK) demostró ser el más eficiente para intersecciones m ́ultiples, mostrando tiempos de ejecución consistentes a medida que aumentaba la dimensionalidad de los conjuntos. Para el conjunto C (k=4), BK mantuvo un tiempo promedio de solo 0.000865 segundos, significativamente menor que las combinaciones por pares. Sin embargo, este algoritmo requirió un mayor número de comparaciones (3855.715 en promedio para C), lo que sugiere un equilibrio entre tiempo de ejecución y

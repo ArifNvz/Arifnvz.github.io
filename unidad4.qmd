@@ -1,14 +1,15 @@
 ---
+title: 4A. Reporte escrito. Experimentos y análisis de algoritmos de búsqueda por comparación.
 jupyter: python3
 ---
 
-#4A. Reporte escrito. Experimentos y análisis de algoritmos de búsqueda por comparación.
 
 Docente: **Dr. Eric Sadit Téllez Avila**
 
 Alumno: **Arif Narvaez de la O**
 
-##1. Introducción
+
+## 1. Introducción
 Este documento describe la implementación y evaluación de diversos algoritmos de búsqueda aplicados a un conjunto de datos ordenado. Se han considerado cinco métodos de búsqueda distintos:
 
 1. **Búsqueda binaria acotada**
@@ -25,7 +26,7 @@ El **objetivo** es medir la eficiencia de cada algoritmo en términos de número
 
 De acuerdo con Cormen et al. (2009), la búsqueda binaria es óptima en listas ordenadas, mientras que Knuth (1998) destaca que la búsqueda secuencial es ineficiente en grandes volúmenes de datos. La estructura SkipList, introducida por Pugh (1990), se considera una alternativa eficiente que permite búsquedas rápidas mediante listas enlazadas con múltiples niveles.
 
-##2. Librerias a utilizar
+## 2. Librerias a utilizar
 
 ```{python}
 #| colab: {base_uri: https://localhost:8080/}
@@ -37,20 +38,17 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from bisect import bisect_left
 from sortedcontainers import SortedList
-from google.colab import drive
 import random
-
-drive.mount('/content/drive')
 ```
 
-##3.Carga de datos
+## 3.Carga de datos
 Esta Secc¿cion de codigo abre y carga los datos desde un archivo JSON, extrayendo las claves y ordenándolas para facilitar las búsquedas.
 
 
 ```{python}
-ruta_datos = "/content/drive/MyDrive/materiales/listas-ordenadas/p-032_ordenado.json"
+ruta_datos = "./archivos/p-032_ordenado.json"
 ruta_consultas = [
-    f"/content/drive/MyDrive/materiales/Consultas-20250402/consultas-{i}-listas-posteo.json"
+    f"./archivos/consultas-{i}-listas-posteo.json"
     for i in range(1, 5)
 ]
 
@@ -69,7 +67,7 @@ datos_ordenados = sorted(datos.keys())
 
 * datos_ordenados: Lista de claves extraídas y ordenadas para su uso en los algoritmos de búsqueda.
 
-##4. Implementacion de los algoritmos de busqueda
+## 4. Implementacion de los algoritmos de busqueda
 **BUSQUEDA BINARIA**
 
 Este algoritmo tiene una complejidad de O(log n) y es eficiente para listas ordenadas (Cormen et al., 2009).
@@ -297,7 +295,7 @@ for elemento in datos_ordenados:
     skiplist.insertar(elemento)
 ```
 
-##5. Resultados
+## 5. Resultados
 
 Esta función, mostrar_resultados(), tiene como objetivo convertir un diccionario de resultados (resultados) en un diccionario de DataFrames de pandas, donde cada DataFrame corresponde a una consulta específica.
 
@@ -488,7 +486,7 @@ plt.suptitle('Comparación de Métodos de Búsqueda por Consulta', y=1.02, fonts
 plt.show()
 ```
 
-##6. Conclusiones
+## 6. Conclusiones
 
 Los resultados muestran que la búsqueda binaria y la estructura de datos SkipList son significativamente más eficientes en términos de número de comparaciones y tiempo de ejecución.
 
@@ -496,7 +494,7 @@ La búsqueda secuencial y las variantes no acotadas presentan un alto número de
 
 Por otro lado, la implementación de estructuras avanzadas como SkipList puede optimizar la búsqueda en grandes volúmenes de datos. Su rendimiento, en algunos casos, es incluso mejor que la búsqueda binaria debido a su estructura de múltiples niveles de acceso.
 
-##7. Referencias
+## 7. Referencias
 
 * Cormen, T. H., Leiserson, C. E., Rivest, R. L., & Stein, C. (2009). Introduction to Algorithms. MIT Press.
 
