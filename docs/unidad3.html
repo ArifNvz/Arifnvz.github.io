@@ -200,7 +200,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>El análisis de algoritmos de ordenamiento es fundamental para entender cómo diferentes métodos pueden resolver un mismo problema de manera más o menos eficiente. En este trabajo, se implementarán y compararán cinco algoritmos de ordenamiento: Bubble Sort, Heapsort, Mergesort, Quicksort y la estructura de datos SkipList. El objetivo es evaluar su rendimiento en términos de tiempo de ejecución y número de operaciones realizadas, utilizando archivos JSON con diferentes niveles de perturbación.</p>
 <p>Los archivos JSON contienen listas de números que representan conjuntos de datos con distintos grados de desorden. A través de este análisis, se busca determinar cuál de estos algoritmos es más eficiente para ordenar grandes volúmenes de datos y cómo su rendimiento varía según el nivel de desorden inicial.</p>
 <p>#1- IMPORTACION DE LAS LIBRERIAS</p>
-<div id="fc82f62b" class="cell" data-execution_count="1">
+<div id="3630c5f8" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -210,7 +210,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>#2-RUTA DE ACCESO PARA LOS ARCHIVOS</p>
 <p>La variable ruta almacena la generalidad del path donde se encuentran alojados los archivos y en conjunto de un diccionario se concatenan los nombres de los archivos. La finalidad de crear un ruta por medio de un diccionario es que se presentaron problemas de dimensionalidad al querer guardar os datos cargados en una lista, por ello se opto por mejor crear una funcion que cargue y lea los archivos iterando cada una de las rutas de los archivos para despues aplicar los algoritmos que señala el ejercicio.</p>
-<div id="c778fccc" class="cell" data-execution_count="2">
+<div id="c497d0db" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>archivos_json <span class="op">=</span> {</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"lista_post_p016"</span>: <span class="st">"./archivos/listas-posteo-con-perturbaciones-p=016.json"</span>,</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"lista_post_p032"</span>: <span class="st">"./archivos/listas-posteo-con-perturbaciones-p=032.json"</span>,</span>
@@ -223,7 +223,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>#3-CARGA Y LECTURA DE LOS DATOS La función</p>
 <pre><code>cargar_json_como_lista</code></pre>
 <p>se encarga de leer un archivo JSON y convertirlo en una lista de listas, lo cual es útil para procesar datos estructurados. Primero, abre el archivo JSON en modo lectura y carga su contenido utilizando la función json.load. Luego se verifica la estructura del JSON cargado: si es un diccionario, extrae los valores (que se espera que sean listas) y los convierte en una lista de listas esta es una medida preventiva para evitar problemas con los tipos de datos a la hora de aplicar los algoritmos; posteriormente si es una lista de listas, la utiliza directamente. Si el archivo JSON no tiene una estructura válida (es decir, no es un diccionario ni una lista de listas), la función lanza una excepción ValueError indicando que la estructura no es compatible.</p>
-<div id="73e2024b" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-execution_count="3">
+<div id="b4aaca8c" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Función para cargar un archivo JSON como lista de listas</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cargar_json_como_lista(ruta_archivo):</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(ruta_archivo, <span class="st">'r'</span>) <span class="im">as</span> archivo:</span>
@@ -251,7 +251,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> nones <span class="op">+</span> non_nones</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>#4-ALGORITMOS A UTILIZAR Se procede a crear un algoritmo con las operaciones necesarias para llevar a cabo los calculos solicitados, estos se declaran en una funcion para posteriormente ser llamada en otra seccion del notebook</p>
-<div id="b728cbfe" class="cell" data-execution_count="4">
+<div id="99e71db6" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> adaptive_bubble_sort(lst):</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    lst <span class="op">=</span> move_nones_to_end(lst.copy())</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> <span class="bu">len</span>(lst)</span>
@@ -447,7 +447,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>aplicar_algoritmo_lista</code></pre>
 <p>se encarga de aplicar un algoritmo de ordenamiento específico a una lista de datos y medir tanto el tiempo de ejecución como el número de operaciones (comparaciones) realizadas. Primero registra el tiempo inicial antes de ejecutar el algoritmo. Posteriormente llama al algoritmo pasando una copia de la lista original para evitar modificaciones no deseadas. El algoritmo devuelve la lista ordenada y el número de operaciones realizadas. Finalmente, se calcula el tiempo de ejecución restando el tiempo inicial del tiempo actual.</p>
 <p>Por alguna razon que no se logro identificar un error relacionado con el tipo de datos de los archivos, lo que no permitia la ejecucion del codigo en algunas listas, por lo que se empleó un “Try” por si ocurre algún error durante la ejecución, se captura la excepción y se imprime un mensaje de error, devolviendo “None” para el tiempo y las operaciones para poder continuar midiendo aquellos datos a los que si se le puedan aplicar los algoritmos definidos.</p>
-<div id="2b9d8504" class="cell" data-execution_count="5">
+<div id="5d92f399" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">""" --- Funcion que aplica los algoritmos a las listas de datos ---"""</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> aplicar_algoritmo_lista(lista, algoritmo, nombre_algoritmo):</span>
@@ -461,7 +461,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span>, <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>#6-PROCESAMIENTO DE LOS DATOS Se procede a aplicar los diferentes algoritmos de ordenamiento a los datos contenidos en los archivos previamente cargados, y almacenar los resultados en un DataFrame para su posterior análisis. Primero, se define un diccionario resultados_totales que servirá para almacenar los resultados de cada algoritmo aplicado, incluyendo el nombre del archivo, el algoritmo utilizado, el tiempo total de ejecución y el número total de operaciones realizadas. Luego, se itera sobre cada archivo JSON, cargando los datos como una lista. Para cada archivo, se aplican los algoritmos de ordenamiento (Bubble Sort, Heapsort, Mergesort, Quicksort y SkipList) a cada columna (lista) de datos, sumando el tiempo de ejecución y las operaciones realizadas. Estos resultados se almacenan en el diccionario resultados_totales. Finalmente, se crea un DataFrame a partir del diccionario y se guarda en un archivo CSV (resultados_totales.csv) para facilitar su visualización y análisis. Este proceso permite comparar el rendimiento de los algoritmos en términos de tiempo y operaciones para diferentes conjuntos de datos.</p>
-<div id="56e229d9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:384}}" data-execution_count="6">
+<div id="93d1b632" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:384}}" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Procesamiento de datos y generación de resultados</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>resultados_totales <span class="op">=</span> {</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Archivo'</span>: [],</span>
@@ -516,11 +516,11 @@ Procesando archivo: lista_post_p512...</code></pre>
 </div>
 </div>
 <p>#7-ALMACENAMIENTO DE LOS DATOS Se guardan los datos obtenidos de cada uno de los archivos con los tiempos de ejecucion y comparacion de cada algoritmo para posteriormete realizar un analisis y comparacion de cada uno de ellos</p>
-<div id="fa7d97d2" class="cell" data-execution_count="7">
+<div id="7b547848" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear DataFrame con los resultados totales</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>df_resultados_totales <span class="op">=</span> pd.DataFrame(resultados_totales)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="d858de75" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-execution_count="8">
+<div id="94b199ec" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df_resultados_totales</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <div>
@@ -541,211 +541,211 @@ Procesando archivo: lista_post_p512...</code></pre>
 <td data-quarto-table-cell-role="th">0</td>
 <td>lista_post_p016</td>
 <td>Bubble Sort Adaptativo</td>
-<td>429.212308</td>
+<td>255.414335</td>
 <td>1241375084</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
 <td>lista_post_p016</td>
 <td>Heapsort</td>
-<td>3.950860</td>
+<td>2.479624</td>
 <td>7149846</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
 <td>lista_post_p016</td>
 <td>Mergesort Optimizado</td>
-<td>2.189926</td>
+<td>1.050701</td>
 <td>1572444</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
 <td>lista_post_p016</td>
 <td>Quicksort Mejorado</td>
-<td>2.348442</td>
-<td>4204106</td>
+<td>1.207603</td>
+<td>4207895</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
 <td>lista_post_p016</td>
 <td>SkipList Mejorada</td>
-<td>5.849210</td>
-<td>5036978</td>
+<td>2.993088</td>
+<td>5082259</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">5</td>
 <td>lista_post_p032</td>
 <td>Bubble Sort Adaptativo</td>
-<td>449.907236</td>
+<td>239.265536</td>
 <td>1234395441</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">6</td>
 <td>lista_post_p032</td>
 <td>Heapsort</td>
-<td>3.683268</td>
+<td>2.005779</td>
 <td>7143747</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">7</td>
 <td>lista_post_p032</td>
 <td>Mergesort Optimizado</td>
-<td>1.742289</td>
+<td>1.060872</td>
 <td>1669236</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">8</td>
 <td>lista_post_p032</td>
 <td>Quicksort Mejorado</td>
-<td>2.417310</td>
-<td>4321781</td>
+<td>1.167084</td>
+<td>4259912</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">9</td>
 <td>lista_post_p032</td>
 <td>SkipList Mejorada</td>
-<td>5.964133</td>
-<td>5090126</td>
+<td>2.752939</td>
+<td>4893750</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">10</td>
 <td>lista_post_p064</td>
 <td>Bubble Sort Adaptativo</td>
-<td>488.161700</td>
+<td>227.436308</td>
 <td>1298424914</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">11</td>
 <td>lista_post_p064</td>
 <td>Heapsort</td>
-<td>4.071537</td>
+<td>2.012309</td>
 <td>7134135</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">12</td>
 <td>lista_post_p064</td>
 <td>Mergesort Optimizado</td>
-<td>1.613322</td>
+<td>1.119295</td>
 <td>1755354</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">13</td>
 <td>lista_post_p064</td>
 <td>Quicksort Mejorado</td>
-<td>1.976349</td>
-<td>4100935</td>
+<td>1.121107</td>
+<td>4162969</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">14</td>
 <td>lista_post_p064</td>
 <td>SkipList Mejorada</td>
-<td>5.035250</td>
-<td>5100895</td>
+<td>2.954753</td>
+<td>5059347</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">15</td>
 <td>lista_post_p128</td>
 <td>Bubble Sort Adaptativo</td>
-<td>489.192647</td>
+<td>232.102209</td>
 <td>1316731629</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">16</td>
 <td>lista_post_p128</td>
 <td>Heapsort</td>
-<td>4.428272</td>
+<td>2.051897</td>
 <td>7112061</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">17</td>
 <td>lista_post_p128</td>
 <td>Mergesort Optimizado</td>
-<td>2.327762</td>
+<td>1.097049</td>
 <td>1844035</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">18</td>
 <td>lista_post_p128</td>
 <td>Quicksort Mejorado</td>
-<td>2.458507</td>
-<td>4344266</td>
+<td>1.132678</td>
+<td>4220426</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">19</td>
 <td>lista_post_p128</td>
 <td>SkipList Mejorada</td>
-<td>5.189517</td>
-<td>5002218</td>
+<td>2.899947</td>
+<td>4893048</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">20</td>
 <td>lista_post_p256</td>
 <td>Bubble Sort Adaptativo</td>
-<td>501.019581</td>
+<td>248.406248</td>
 <td>1333628216</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">21</td>
 <td>lista_post_p256</td>
 <td>Heapsort</td>
-<td>4.454082</td>
+<td>2.219192</td>
 <td>7079295</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">22</td>
 <td>lista_post_p256</td>
 <td>Mergesort Optimizado</td>
-<td>2.368999</td>
+<td>1.103059</td>
 <td>1915028</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">23</td>
 <td>lista_post_p256</td>
 <td>Quicksort Mejorado</td>
-<td>2.480927</td>
-<td>4241314</td>
+<td>1.136361</td>
+<td>4217797</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">24</td>
 <td>lista_post_p256</td>
 <td>SkipList Mejorada</td>
-<td>5.957111</td>
-<td>4985533</td>
+<td>2.895236</td>
+<td>4910622</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">25</td>
 <td>lista_post_p512</td>
 <td>Bubble Sort Adaptativo</td>
-<td>513.254737</td>
+<td>246.074086</td>
 <td>1357473311</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">26</td>
 <td>lista_post_p512</td>
 <td>Heapsort</td>
-<td>3.939354</td>
+<td>2.163036</td>
 <td>7032459</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">27</td>
 <td>lista_post_p512</td>
 <td>Mergesort Optimizado</td>
-<td>2.167728</td>
+<td>1.140570</td>
 <td>1975697</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">28</td>
 <td>lista_post_p512</td>
 <td>Quicksort Mejorado</td>
-<td>2.225839</td>
-<td>4299766</td>
+<td>1.231546</td>
+<td>4217188</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">29</td>
 <td>lista_post_p512</td>
 <td>SkipList Mejorada</td>
-<td>4.625292</td>
-<td>4850968</td>
+<td>3.313740</td>
+<td>4943291</td>
 </tr>
 </tbody>
 </table>
@@ -754,7 +754,7 @@ Procesando archivo: lista_post_p512...</code></pre>
 </div>
 </div>
 <p>#8-VISUALIZACION DE LOS RESULTADOS Se procede a agrupar por tipo de algoritmo utilizado los tiempos de ejecucion de cada archivo para observar como interactuan los resultados conforme se incrementa el nivel de perturbacion</p>
-<div id="ff3cc76b" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-execution_count="9">
+<div id="e31eed00" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df_bubble_sort <span class="op">=</span> df_resultados_totales[df_resultados_totales[<span class="st">'Algoritmo'</span>] <span class="op">==</span> <span class="st">'Bubble Sort'</span>]</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>df_bubble_sort</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
@@ -778,7 +778,7 @@ Procesando archivo: lista_post_p512...</code></pre>
 </div>
 </div>
 </div>
-<div id="ac90dc9f" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:237}}" data-execution_count="10">
+<div id="bcb02479" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:237}}" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df_heapsort <span class="op">=</span> df_resultados_totales[df_resultados_totales[<span class="st">'Algoritmo'</span>] <span class="op">==</span> <span class="st">'Heapsort'</span>]</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>df_heapsort</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
@@ -800,42 +800,42 @@ Procesando archivo: lista_post_p512...</code></pre>
 <td data-quarto-table-cell-role="th">1</td>
 <td>lista_post_p016</td>
 <td>Heapsort</td>
-<td>3.950860</td>
+<td>2.479624</td>
 <td>7149846</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">6</td>
 <td>lista_post_p032</td>
 <td>Heapsort</td>
-<td>3.683268</td>
+<td>2.005779</td>
 <td>7143747</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">11</td>
 <td>lista_post_p064</td>
 <td>Heapsort</td>
-<td>4.071537</td>
+<td>2.012309</td>
 <td>7134135</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">16</td>
 <td>lista_post_p128</td>
 <td>Heapsort</td>
-<td>4.428272</td>
+<td>2.051897</td>
 <td>7112061</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">21</td>
 <td>lista_post_p256</td>
 <td>Heapsort</td>
-<td>4.454082</td>
+<td>2.219192</td>
 <td>7079295</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">26</td>
 <td>lista_post_p512</td>
 <td>Heapsort</td>
-<td>3.939354</td>
+<td>2.163036</td>
 <td>7032459</td>
 </tr>
 </tbody>
@@ -844,7 +844,7 @@ Procesando archivo: lista_post_p512...</code></pre>
 </div>
 </div>
 </div>
-<div id="832979c7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:89}}" data-execution_count="11">
+<div id="ea1f7826" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:89}}" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df_mergesort <span class="op">=</span> df_resultados_totales[df_resultados_totales[<span class="st">'Algoritmo'</span>] <span class="op">==</span> <span class="st">'Mergesort'</span>]</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>df_mergesort</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
@@ -868,7 +868,7 @@ Procesando archivo: lista_post_p512...</code></pre>
 </div>
 </div>
 </div>
-<div id="ee0326fe" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:89}}" data-execution_count="12">
+<div id="4684801c" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:89}}" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df_quicksort <span class="op">=</span> df_resultados_totales[df_resultados_totales[<span class="st">'Algoritmo'</span>] <span class="op">==</span> <span class="st">'Quicksort'</span>]</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>df_quicksort</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
@@ -892,7 +892,7 @@ Procesando archivo: lista_post_p512...</code></pre>
 </div>
 </div>
 </div>
-<div id="ba43b130" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:89}}" data-execution_count="13">
+<div id="8ec6bb9e" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:89}}" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>df_skip_list <span class="op">=</span> df_resultados_totales[df_resultados_totales[<span class="st">'Algoritmo'</span>] <span class="op">==</span> <span class="st">'SkipList'</span>]</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>df_skip_list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
